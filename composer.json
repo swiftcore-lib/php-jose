@@ -1,0 +1,29 @@
+{
+    "name": "swiftcore/php-jose",
+    "description": "Pure PHP implementation of JSON Object Signing and Encryption library.",
+    "type": "library",
+    "require": {
+        "php": "^5.6|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Swiftcore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Swiftcore\\Jose\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "YQ",
+            "email": "yquan@msn.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
