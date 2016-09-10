@@ -1,9 +1,7 @@
-# Swiftcore Javascript Object Signing and Encryption (JOSE) PHP Library
+# Swiftcore Javascript Object Signing and Encryption (JOSE) PHP Library Overview
 
 [![Build Status](https://travis-ci.org/swiftcore-lib/php-jose.svg?branch=master)](https://travis-ci.org/swiftcore-lib/php-jose)
 [![Coverage Status](https://coveralls.io/repos/github/swiftcore-lib/php-jose/badge.svg?branch=develop)](https://coveralls.io/github/swiftcore-lib/php-jose?branch=develop)
-
-## Overview
 
 This library provides the pure PHP implementation of [Javascript Object Signing and Encryption](https://datatracker.ietf.org/wg/jose/documents/) that provides tremendous performance.
 
