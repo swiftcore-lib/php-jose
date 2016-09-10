@@ -1,5 +1,5 @@
 {
-    "name": "swiftcore/php-jose",
+    "name": "swiftcore-lib/php-jose",
     "description": "Pure PHP implementation of JSON Object Signing and Encryption library.",
     "type": "library",
     "require": {
