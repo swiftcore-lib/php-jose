@@ -21,9 +21,9 @@ matrix:
         - php: nightly
 
 before_script:
-    - composer self-update
-    - if [[ $DEPS = low ]]; then composer update --no-interaction --prefer-lowest --dev; fi
-    - if [[ !$DEPS ]]; then composer install --no-interaction --dev; fi
+    - travis_retry composer self-update
+    - if [[ $DEPS = low ]]; then travis_retry composer update --no-interaction --prefer-lowest --dev; fi
+    - if [[ !$DEPS ]]; then travis_retry composer install --no-interaction --dev; fi
 
 script:
     - composer test-with-coverage
