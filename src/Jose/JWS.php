@@ -23,8 +23,8 @@ class JWS
         Headers $protected = null,
         Signature $signature = null
     ) {
-        $protected['b64'] = true;
-        $protected['crit'] = ['b64', 'alg'];
+//        $protected['b64'] = true;
+//        $protected['crit'] = ['b64', 'alg'];
 
         $this->protected = $protected;
         $this->payload = $payload;

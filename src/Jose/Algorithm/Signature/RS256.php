@@ -14,7 +14,7 @@ class RS256
 
         $input = sprintf('%s.%s', $protected, $payload);
 
-        openssl_sign($input, $signature, $jwk->key, OPENSSL_ALGO_SHA256);
+        openssl_sign($input, $signature, $jwk->key, 'SHA256');
         return $signature;
     }
 
@@ -23,7 +23,7 @@ class RS256
         $signature = $jws->signature->raw();
         $input = sprintf('%s.%s', $jws->protected, $jws->payload);
 
-        $verified = openssl_verify($input, $signature, $jwk->key, OPENSSL_ALGO_SHA256);
+        $verified = openssl_verify($input, $signature, $jwk->key, 'SHA256');
 
         return 1 === $verified;
     }

@@ -1,12 +1,8 @@
 <?php
-namespace Swiftcore\Jose\Tests;
+namespace Swiftcore\Jose\Tests\Utility;
 
-use Swiftcore\Base64Url;
-use Swiftcore\Jose\Element\Headers;
-use Swiftcore\Jose\Element\Payload;
-use Swiftcore\Jose\JWK;
-use Swiftcore\Jose\JWS;
-use Swiftcore\Jose\RsaKey;
+use Swiftcore\Jose\Tests\TestCase;
+use Swiftcore\Utility\Base64Url;
 
 class Base64UrlTests extends TestCase
 {

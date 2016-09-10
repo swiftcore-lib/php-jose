@@ -1,7 +1,7 @@
 <?php
 namespace Swiftcore\Jose\Element;
 
-use Swiftcore\Base64Url;
+use Swiftcore\Utility\Base64Url;
 
 abstract class Arrayable extends \ArrayObject
 {
