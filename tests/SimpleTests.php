@@ -1,29 +1,72 @@
 <?php
 namespace Swiftcore\Jose\Tests;
 
+use Swiftcore\Base64Url;
 use Swiftcore\Jose\Element\Headers;
 use Swiftcore\Jose\Element\Payload;
+use Swiftcore\Jose\Element\Signature;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
 use Swiftcore\Jose\RsaKey;
 
 class SimpleTests extends TestCase
 {
-    public function testJwsRs256SignatureBasic()
+    public function testJwsRs256Signing()
     {
         $jwk = JWK::create(new Headers(['kty' => 'RSA']), ['file' => BASE_PATH . '/keys/rsa_private1.pem',
             'pwd' => '123123']);
+        $headers = new Headers([
+            'alg' => 'RS256',
+            'b64' => true,
+            'crit' => ['b64', 'alg']
+        ]);
+        $payload = new Payload(json_encode(["sub" => "1234567890", "name" => "John Doe", "admin" => true]));
 
-        $headers = new Headers(['alg' => 'rs256']);
-        $payload = new Payload('The quick brown fox jumps over the lazy dog.');
         $jws = new JWS($jwk, $payload, $headers);
         $jws->sign();
-        $expectedSignature = 'JDTYtvoN4u4m02JAOt7AX4U0STLhrSqcd48W_ktZGI4B5h2aLya-q96RD-'.
-            '1jPktFVNcY4zGqAy5TLD9k765i8J_6HLFqHibNTG8WOrPGWYRmF6inT1t66D55MMyIcyyvusrM3_'.
-            '5SLq0YumEcH-nebUEvvU0A5YVz3LvAx5ugFzSv2K3HhRQuN3V6hn9om9xJL0O4geUTS2DI52zhAbziWho_'.
-            'TNHgqzpI6bScdFgYNFZ_ToP-EnU4f97TvrUGLgnnsoevgrphaAyBGn5kmMnIrxbftxtai3HfUe59HI-'.
-            'VetknIXIYY0PoWfFabCLtTdFD42n7sQeI2crKjgT1ko6vAw';
 
-        $this->assertEquals($expectedSignature, $jws->signature);
+        $expectedHeaders = 'eyJhbGciOiJSUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0';
+        $expectedPayload = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
+        $expectedSignature = 'P2rxkB1tbnABHAbhKafL3MgkXCVszkfTrZrtEzAEqY9azVKI90v3wz0Peh-WIt7BC_GTaoQx91bz2tfEYtZm2sAxlbSzEc1JK4FlgpQw8UdLLkbw2pi73ABVo675Z2OPjQuD_hlDhLp0jisE0Z65epusCc45ol9HQSRCwZNUZLf5RK10OtsvCmSwxEcrd0INOJbb_MibTg40d49iJ74KZHv5taCBPv9ilqXmjwlQ1eGpfsg7XZtn4sPmIzkFvFTMNEXCIRn5AX20uRtjNqMKClFOPkQdNE_-YHmacrfL03EJDsJDcGATCWrMtbs09u1lfMSvnncw0HLcYze74FTfaA';
+
+        $this->assertEquals($expectedHeaders, strval($jws->protected));
+        $this->assertEquals($expectedPayload, strval($jws->payload));
+        $this->assertEquals($expectedSignature, strval($jws->signature));
+    }
+
+    public function testJwsRs256Verfying()
+    {
+        $jwsCompact = 'eyJhbGciOiJSUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.P2rxkB1tbnABHAbhKafL3MgkXCVszkfTrZrtEzAEqY9azVKI90v3wz0Peh-WIt7BC_GTaoQx91bz2tfEYtZm2sAxlbSzEc1JK4FlgpQw8UdLLkbw2pi73ABVo675Z2OPjQuD_hlDhLp0jisE0Z65epusCc45ol9HQSRCwZNUZLf5RK10OtsvCmSwxEcrd0INOJbb_MibTg40d49iJ74KZHv5taCBPv9ilqXmjwlQ1eGpfsg7XZtn4sPmIzkFvFTMNEXCIRn5AX20uRtjNqMKClFOPkQdNE_-YHmacrfL03EJDsJDcGATCWrMtbs09u1lfMSvnncw0HLcYze74FTfaA';
+        $expectedHeaders = json_encode([
+            'alg' => 'RS256',
+            'b64' => true,
+            'crit' => ['b64', 'alg']
+        ]);
+        $expectedPayload = json_encode(["sub" => "1234567890", "name" => "John Doe", "admin" => true]);
+
+        $parts =  explode('.', $jwsCompact);
+        $this->assertCount(3, $parts);
+        foreach ($parts as &$part) {
+            $part = Base64Url::decode($part);
+            $this->assertNotFalse($part);
+        }
+
+        list($headers, $payload, $signature) = $parts;
+        $this->assertJson($headers);
+        $this->assertJson($payload);
+        $this->assertJsonStringEqualsJsonString($expectedHeaders, $headers);
+        $this->assertJsonStringEqualsJsonString($expectedPayload, $payload);
+
+        // verify signature
+        $jwk = JWK::create(new Headers(['kty' => 'RSA']), ['file' => BASE_PATH . '/keys/rsa_public1.pem',
+            'pwd' => '123123']);
+        $jws = new JWS(
+            $jwk,
+            new Payload($payload),
+            new Headers(json_decode($headers, true)),
+            new Signature($signature)
+        );
+        $jws = $jws->verify();
+        $this->assertTrue($jws->verified);
     }
 }
