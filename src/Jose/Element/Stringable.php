@@ -12,6 +12,11 @@ abstract class Stringable
         $this->data = $data;
     }
 
+    public function raw()
+    {
+        return $this->data;
+    }
+
     public function __toString()
     {
         return Base64Url::encode($this->data);

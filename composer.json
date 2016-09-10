@@ -18,6 +18,9 @@
             "Swiftcore\\Jose\\Tests\\": "tests/"
         }
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "license": "MIT License",
     "authors": [
         {

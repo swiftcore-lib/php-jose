@@ -5,10 +5,14 @@ use Swiftcore\Base64Url;
 
 abstract class Arrayable extends \ArrayObject
 {
+    public function json()
+    {
+        return json_encode($this);
+    }
+
     public function __toString()
     {
-        print_r($this);
-        $data = is_array($this->data) ? json_encode($this->data) : $this->data;
+        $data = json_encode($this);
         return Base64Url::encode($data);
     }
 }

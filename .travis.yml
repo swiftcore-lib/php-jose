@@ -1,0 +1,31 @@
+#Travis CI configuration (https://travis-ci.org/)
+language: php
+sudo: false
+matrix:
+    fast_finish: true
+    include:
+        - php: 5.5.9
+          env: DEPS=low
+        - php: 5.6
+          env: DEPS=low
+        - php: 5.6
+        - php: 7.0
+          env: DEPS=low
+        - php: 7.0
+        - php: 7.0
+          env: DEPS=low
+        - php: 7.1
+          env: DEPS=low
+        - php: 7.1
+        - php: hhvm
+          env: DEPS=low
+        - php: hhvm
+        - php: nightly
+
+before_script:
+    - composer self-update
+    - if [[ $DEPS = low ]]; then composer update --no-interaction --prefer-lowest --dev; fi
+    - if [[ !$DEPS ]]; then composer install --no-interaction --dev; fi
+
+script:
+    - composer test

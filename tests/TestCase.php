@@ -1,7 +1,6 @@
 <?php
 namespace Swiftcore\Jose\Tests;
-
-define('BASTH_PATH', __DIR__);
+define('BATH_PATH', __DIR__);
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
@@ -17,6 +16,6 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     protected function getkeys()
     {
-        $rsaPrivate1 = file_get_contents(BASTH_PATH . '/keys/rsa_private.pem');
+        $rsaPrivate1 = file_get_contents(BATH_PATH . '/keys/rsa_private.pem');
     }
 }

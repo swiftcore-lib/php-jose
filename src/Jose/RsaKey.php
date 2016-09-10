@@ -1,11 +1,9 @@
 <?php
 namespace Swiftcore\Jose;
 
-use Swiftcore\Base64Url;
-
 final class RsaKey extends JWK
 {
-    public function __construct($headers, $key = [])
+    public function __construct($headers, $key = null)
     {
         $this->headers = $headers;
 
