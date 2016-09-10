@@ -26,4 +26,7 @@ before_script:
     - if [[ !$DEPS ]]; then composer install --no-interaction --dev; fi
 
 script:
-    - composer test
+    - composer test-with-coverage
+
+after_success:
+  - travis_retry vendor/bin/coveralls -v

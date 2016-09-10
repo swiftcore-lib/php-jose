@@ -5,3 +5,4 @@
 # composer files
 /vendor/
 composer.lock
+/build/
