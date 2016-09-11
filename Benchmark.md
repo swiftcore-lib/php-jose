@@ -23,24 +23,44 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 ## Result
 
-### Signature Benchmark of Tiny payload
+### Signature Benchmark of 1KB payload
 
 #### Signing
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	1.245 ms	|	1245 ms	|	1000
-	RS384		|	1.25 ms	|	1250 ms	|	1000
-	RS512		|	1.244 ms	|	1244 ms	|	1000
+	RS256		|	1.302 ms	|	1302 ms	|	1000
+	RS384		|	1.27 ms	|	1270 ms	|	1000
+	RS512		|	1.327 ms	|	1327 ms	|	1000
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	0.029 ms	|	29 ms	|	1000
-	RS384		|	0.028 ms	|	28 ms	|	1000
-	RS512		|	0.029 ms	|	29 ms	|	1000
+	RS256		|	0.037 ms	|	37 ms	|	1000
+	RS384		|	0.037 ms	|	37 ms	|	1000
+	RS512		|	0.037 ms	|	37 ms	|	1000
+
+
+### Signature Benchmark of 100KB payload
+
+#### Signing
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	1.998 ms	|	1998 ms	|	1000
+	RS384		|	1.939 ms	|	1939 ms	|	1000
+	RS512		|	1.924 ms	|	1924 ms	|	1000
+
+
+#### Verifying
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	0.717 ms	|	717 ms	|	1000
+	RS384		|	0.564 ms	|	564 ms	|	1000
+	RS512		|	0.577 ms	|	577 ms	|	1000
 
 
 ### Signature Benchmark of 2MB payload
@@ -49,18 +69,18 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	21.209 ms	|	1060 ms	|	50
-	RS384		|	21.004 ms	|	1050 ms	|	50
-	RS512		|	20.957 ms	|	1048 ms	|	50
+	RS256		|	20.965 ms	|	1048 ms	|	50
+	RS384		|	21.436 ms	|	1072 ms	|	50
+	RS512		|	21.261 ms	|	1063 ms	|	50
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	20.186 ms	|	1009 ms	|	50
-	RS384		|	16.666 ms	|	833 ms	|	50
-	RS512		|	17.01 ms	|	851 ms	|	50
+	RS256		|	19.375 ms	|	969 ms	|	50
+	RS384		|	16.402 ms	|	820 ms	|	50
+	RS512		|	16.775 ms	|	839 ms	|	50
 
 
 ### Signature Benchmark of 10MB payload
@@ -69,18 +89,20 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	101.183 ms	|	2024 ms	|	20
-	RS384		|	100.285 ms	|	2006 ms	|	20
-	RS512		|	100.457 ms	|	2009 ms	|	20
+	RS256		|	99.369 ms	|	1987 ms	|	20
+	RS384		|	99.982 ms	|	2000 ms	|	20
+	RS512		|	100.462 ms	|	2009 ms	|	20
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	99.031 ms	|	1981 ms	|	20
-	RS384		|	84.639 ms	|	1693 ms	|	20
-	RS512		|	86.08 ms	|	1722 ms	|	20
+	RS256		|	98.609 ms	|	1972 ms	|	20
+	RS384		|	85.297 ms	|	1706 ms	|	20
+	RS512		|	83.874 ms	|	1677 ms	|	20
+
+
 
 
 
