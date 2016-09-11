@@ -15,10 +15,10 @@ matrix:
         - php: 7.1
           env: DEPS=low
         - php: 7.1
-        - php: hhvm
-          env: DEPS=low
-        - php: hhvm
         - php: nightly
+        - php: hhvm-3.9
+        - php: hhvm-3.12
+        - php: hhvm-nightly
 
 before_script:
     - travis_retry composer self-update
