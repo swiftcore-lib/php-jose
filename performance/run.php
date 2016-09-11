@@ -70,19 +70,19 @@ foreach ($testdata as $size => $data) {
         'RS256' => new JWS(
             $jwkPublic,
             new Payload($data['payload']),
-            new Headers(['alg' => 'RS256', 'b64' => true, 'crit' => ['b64', 'alg']], true),
+            new Headers(['alg' => 'RS256', 'b64' => true, 'crit' => ['b64', 'alg']]),
             new Signature('P2rxkB1tbnABHAbhKafL3MgkXCVszkfTrZrtEzAEqY9azVKI90v3wz0Peh-WIt7BC_GTaoQx91bz2tfEYtZm2sAxlbSzEc1JK4FlgpQw8UdLLkbw2pi73ABVo675Z2OPjQuD_hlDhLp0jisE0Z65epusCc45ol9HQSRCwZNUZLf5RK10OtsvCmSwxEcrd0INOJbb_MibTg40d49iJ74KZHv5taCBPv9ilqXmjwlQ1eGpfsg7XZtn4sPmIzkFvFTMNEXCIRn5AX20uRtjNqMKClFOPkQdNE_-YHmacrfL03EJDsJDcGATCWrMtbs09u1lfMSvnncw0HLcYze74FTfaA')
         ),
         'RS384' => new JWS(
             $jwkPublic,
             new Payload($data['payload']),
-            new Headers(['alg' => 'RS384', 'b64' => true, 'crit' => ['b64', 'alg']], true),
+            new Headers(['alg' => 'RS384', 'b64' => true, 'crit' => ['b64', 'alg']]),
             new Signature('P-4dDr4dterZnq5KwprUK3eb1zSmIwF8ZNkNsV_QFyFELE6mBSbmyEwOanODjjpgoNnQwdT9ZJuNCQlT4pdYcqyrKxamUPSVOciNIbDYzFeDz5DFX71hn_J3kIRQiEIYGMufEXhgO8kzvMysZ0GJJnVWR2FHpHd5ihlIXowda5919WEHKpPbtNm_i1Guw06W9O9JyUJtFmxoDrK1RkaI-JhEHCfJiN0oKy0mYFS7LzfrqOTFt6l16T7AVjeovXH_j-_AQbn9ZmTy9PqlsdXHpKFipMCM59gpJqK9bzNDa92GUmMeadv5vtu2wZf9n818GVT8Xs7ECG7Dv1bWdpEyYg')
         ),
         'RS512' => new JWS(
             $jwkPublic,
             new Payload($data['payload']),
-            new Headers(['alg' => 'RS512', 'b64' => true, 'crit' => ['b64', 'alg']], true),
+            new Headers(['alg' => 'RS512', 'b64' => true, 'crit' => ['b64', 'alg']]),
             new Signature('ZuuSCKZ-xPWCeT1Fd3MPBdFDi2XG3sNd6uWK7A2EkBID2bWg1qy0vJpd6UkwS5lFbA2AgwH5aIvm7gwLwj1UxIroeWqJEJ5bhgakjfasG3X7DNhr3l6GLzRS97jLsy6OtEqkspiHgxhYLCZkJ2SKJ0dThyjBT2E1vyaaqhRRrMBITfFX_tYyqPuBb1hvvstXPN_MfAa6yvGa_4E627lsqLTbEtdTXPa6wxWV3cmGlwE3_tDInBU5d3HEKUMwlv7GLXHMwL-6TBhurqepSRzkD_DM6zyuzzH8fFBo0QmnwivHXkggsT-lTFBO_zhgi4NtCvpqsw-A2jV3huBViCLxzA')
         ),
     ];
