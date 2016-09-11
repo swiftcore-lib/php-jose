@@ -1,5 +1,11 @@
 ## Overview
 
+To run benchmark locally, execute following command in `vendor/swiftcore/php-jose/`:
+
+```
+composer benchmark
+```
+
 ## Environment
 
 Following are the result of running on (old) Mac mini (Late 2012) with following configuration:
