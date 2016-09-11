@@ -23,15 +23,15 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 ## Result
 
-### SignatureBenchmark of Tiny payload
+### Signature Benchmark of Tiny payload
 
 #### Signing
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	1.268 ms	|	1268 ms	|	1000
-	RS384		|	1.283 ms	|	1283 ms	|	1000
-	RS512		|	1.254 ms	|	1254 ms	|	1000
+	RS256		|	1.245 ms	|	1245 ms	|	1000
+	RS384		|	1.25 ms	|	1250 ms	|	1000
+	RS512		|	1.244 ms	|	1244 ms	|	1000
 
 
 #### Verifying
@@ -39,46 +39,48 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
 	RS256		|	0.029 ms	|	29 ms	|	1000
-	RS384		|	0.032 ms	|	32 ms	|	1000
-	RS512		|	0.033 ms	|	33 ms	|	1000
+	RS384		|	0.028 ms	|	28 ms	|	1000
+	RS512		|	0.029 ms	|	29 ms	|	1000
 
 
-### SignatureBenchmark of 3mb payload
+### Signature Benchmark of 2MB payload
 
 #### Signing
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	33.352 ms	|	1668 ms	|	50
-	RS384		|	32.287 ms	|	1614 ms	|	50
-	RS512		|	33.378 ms	|	1669 ms	|	50
+	RS256		|	21.209 ms	|	1060 ms	|	50
+	RS384		|	21.004 ms	|	1050 ms	|	50
+	RS512		|	20.957 ms	|	1048 ms	|	50
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	31.998 ms	|	1600 ms	|	50
-	RS384		|	27.608 ms	|	1380 ms	|	50
-	RS512		|	27.591 ms	|	1380 ms	|	50
+	RS256		|	20.186 ms	|	1009 ms	|	50
+	RS384		|	16.666 ms	|	833 ms	|	50
+	RS512		|	17.01 ms	|	851 ms	|	50
 
 
-### SignatureBenchmark of 8mb payload
+### Signature Benchmark of 10MB payload
 
 #### Signing
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	77.348 ms	|	1547 ms	|	20
-	RS384		|	77.428 ms	|	1549 ms	|	20
-	RS512		|	76.821 ms	|	1536 ms	|	20
+	RS256		|	101.183 ms	|	2024 ms	|	20
+	RS384		|	100.285 ms	|	2006 ms	|	20
+	RS512		|	100.457 ms	|	2009 ms	|	20
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	76.103 ms	|	1522 ms	|	20
-	RS384		|	65.706 ms	|	1314 ms	|	20
-	RS512		|	66.239 ms	|	1325 ms	|	20
+	RS256		|	99.031 ms	|	1981 ms	|	20
+	RS384		|	84.639 ms	|	1693 ms	|	20
+	RS512		|	86.08 ms	|	1722 ms	|	20
+
+
 
