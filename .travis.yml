@@ -1,6 +1,6 @@
 #Travis CI configuration (https://travis-ci.org/)
 language: php
-sudo: false
+sudo: required
 dist: trusty
 matrix:
     fast_finish: true
