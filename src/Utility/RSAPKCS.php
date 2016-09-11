@@ -57,8 +57,8 @@ final class RSAPKCS
          *       NULL
          *    BIT STRING (1 element)
          *       SEQUENCE (2 elements)
-         *          INTEGER (2048 bit): 0282010100EB506399F5C612F5A67A09C1192B92FAB53DB28520D859CE0EF6B7D83D40AA1C1DCE2C0720D15A0F531595CAD81BA5D129F91CC6769719F1435872C4BCD0521150A0263B470066489B918BFCA03CE8A0E9FC2C0314C4B096EA30717C03C28CA29E678E63D78ACA1E9A63BDB1261EE7A0B041AB53746D68B57B68BEF37B71382838C95DA8557841A3CA58109F0B4F77A5E929B1A25DC2D6814C55DC0F81CD2F4E5DB95EE70C706FC02C4FCA358EA9A82D8043A47611195580F89458E3DAB5592DEFE06CDE1E516A6C61ED78C13977AE9660A9192CA75CD72967FD3AFAFA1F1A2FF6325A5064D847028F1E6B2329E8572F36E708A549DDA355FC74A32FDD8DBA65
-         *          INTEGER (12 bit): 010001
+         *          INTEGER (2048 bit)
+         *          INTEGER (12 bit)
          *
          * RSAPrivateKey ::= SEQUENCE {
          *   version           Version,
@@ -89,7 +89,7 @@ final class RSAPKCS
 
             $this->sequence = new Sequence($version, $n, $e, $d, $p, $q, $dmp1, $dmq1, $iqmp);
             $this->type = self::TYPE_STRING_PRIVATE;
-        }elseif (!empty($this->e)) {
+        } elseif (!empty($this->e)) {
             // this should be a public key
             $n = new Integer(gmp_strval(gmp_import($this->n), 10));
             $e = new Integer(gmp_strval(gmp_import($this->e), 10));

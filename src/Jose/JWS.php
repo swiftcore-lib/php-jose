@@ -1,7 +1,6 @@
 <?php
 namespace Swiftcore\Jose;
 
-use Swiftcore\Jose\Algorithm\Signature\RS256;
 use Swiftcore\Jose\Element\Headers;
 use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\Element\Signature;
@@ -35,7 +34,9 @@ class JWS
     public function sign()
     {
         $signer = $this->signer();
-        $this->signature = new Signature($signer::sign($this->jwk, $this));
+        $signer = new $signer;
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->signature = new Signature($signer->sign($this->jwk, $this));
         $this->verified = true;
 
         return $this;
@@ -44,7 +45,9 @@ class JWS
     public function verify()
     {
         $verifier = $this->signer();
-        $this->verified = $verifier::verify($this->jwk, $this);
+        $verifier = new $verifier;
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->verified = $verifier->verify($this->jwk, $this);
 
         return $this;
     }
