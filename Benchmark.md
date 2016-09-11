@@ -29,18 +29,18 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	1.302 ms	|	1302 ms	|	1000
-	RS384		|	1.27 ms	|	1270 ms	|	1000
-	RS512		|	1.327 ms	|	1327 ms	|	1000
+	RS256		|	1.264 ms	|	1264 ms	|	1000
+	RS384		|	1.237 ms	|	1237 ms	|	1000
+	RS512		|	1.243 ms	|	1243 ms	|	1000
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	0.037 ms	|	37 ms	|	1000
-	RS384		|	0.037 ms	|	37 ms	|	1000
-	RS512		|	0.037 ms	|	37 ms	|	1000
+	RS256		|	0.043 ms	|	43 ms	|	1000
+	RS384		|	0.038 ms	|	38 ms	|	1000
+	RS512		|	0.038 ms	|	38 ms	|	1000
 
 
 ### Signature Benchmark of 100KB payload
@@ -49,9 +49,9 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	1.998 ms	|	1998 ms	|	1000
-	RS384		|	1.939 ms	|	1939 ms	|	1000
-	RS512		|	1.924 ms	|	1924 ms	|	1000
+	RS256		|	1.978 ms	|	1978 ms	|	1000
+	RS384		|	1.951 ms	|	1951 ms	|	1000
+	RS512		|	1.905 ms	|	1905 ms	|	1000
 
 
 #### Verifying
@@ -59,8 +59,8 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
 	RS256		|	0.717 ms	|	717 ms	|	1000
-	RS384		|	0.564 ms	|	564 ms	|	1000
-	RS512		|	0.577 ms	|	577 ms	|	1000
+	RS384		|	0.585 ms	|	585 ms	|	1000
+	RS512		|	0.631 ms	|	631 ms	|	1000
 
 
 ### Signature Benchmark of 2MB payload
@@ -69,18 +69,18 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	20.965 ms	|	1048 ms	|	50
-	RS384		|	21.436 ms	|	1072 ms	|	50
-	RS512		|	21.261 ms	|	1063 ms	|	50
+	RS256		|	22.913 ms	|	1146 ms	|	50
+	RS384		|	21.301 ms	|	1065 ms	|	50
+	RS512		|	21.508 ms	|	1075 ms	|	50
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	19.375 ms	|	969 ms	|	50
-	RS384		|	16.402 ms	|	820 ms	|	50
-	RS512		|	16.775 ms	|	839 ms	|	50
+	RS256		|	20.509 ms	|	1025 ms	|	50
+	RS384		|	16.821 ms	|	841 ms	|	50
+	RS512		|	16.598 ms	|	830 ms	|	50
 
 
 ### Signature Benchmark of 10MB payload
@@ -89,20 +89,15 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	99.369 ms	|	1987 ms	|	20
-	RS384		|	99.982 ms	|	2000 ms	|	20
-	RS512		|	100.462 ms	|	2009 ms	|	20
+	RS256		|	100.713 ms	|	2014 ms	|	20
+	RS384		|	99.986 ms	|	2000 ms	|	20
+	RS512		|	99.874 ms	|	1997 ms	|	20
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	98.609 ms	|	1972 ms	|	20
-	RS384		|	85.297 ms	|	1706 ms	|	20
-	RS512		|	83.874 ms	|	1677 ms	|	20
-
-
-
-
-
+	RS256		|	98.936 ms	|	1979 ms	|	20
+	RS384		|	84.758 ms	|	1695 ms	|	20
+	RS512		|	84.079 ms	|	1682 ms	|	20
