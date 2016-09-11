@@ -23,21 +23,62 @@ Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
 
 ## Result
 
-### Signature
+### Signature (Tiny)
 
 #### Signing
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	1.234 ms	|	1234 ms	|	1000
-	RS384		|	1.237 ms	|	1237 ms	|	1000
-	RS512		|	1.217 ms	|	1217 ms	|	1000
+	RS256		|	1.252 ms	|	1252 ms	|	1000
+	RS384		|	1.249 ms	|	1249 ms	|	1000
+	RS512		|	1.236 ms	|	1236 ms	|	1000
 
 
 #### Verifying
 
 	Algorithm	|	Average	|	Total		|	Count
 	---------	|	-------	|	-----		|	-----
-	RS256		|	0.029 ms	|	878 ms	|	30000
-	RS384		|	0.029 ms	|	856 ms	|	30000
-	RS512		|	0.029 ms	|	870 ms	|	30000
+	RS256		|	0.029 ms	|	29 ms	|	1000
+	RS384		|	0.029 ms	|	29 ms	|	1000
+	RS512		|	0.033 ms	|	33 ms	|	1000
+
+
+### Signature (3mb)
+
+#### Signing
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	32.634 ms	|	1632 ms	|	50
+	RS384		|	32.562 ms	|	1628 ms	|	50
+	RS512		|	32.535 ms	|	1627 ms	|	50
+
+
+#### Verifying
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	30.943 ms	|	1547 ms	|	50
+	RS384		|	26.596 ms	|	1330 ms	|	50
+	RS512		|	26.834 ms	|	1342 ms	|	50
+
+
+### Signature (8mb)
+
+#### Signing
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	76.991 ms	|	1540 ms	|	20
+	RS384		|	77.723 ms	|	1554 ms	|	20
+	RS512		|	78.018 ms	|	1560 ms	|	20
+
+
+#### Verifying
+
+	Algorithm	|	Average	|	Total		|	Count
+	---------	|	-------	|	-----		|	-----
+	RS256		|	77.193 ms	|	1544 ms	|	20
+	RS384		|	66.432 ms	|	1329 ms	|	20
+	RS512		|	65.116 ms	|	1302 ms	|	20
+
