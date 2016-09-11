@@ -7,10 +7,20 @@ final class RsaKey extends JWK
     {
         $this->headers = $headers;
 
+        $passphrase = null;
         $key = array_values($key);
-        $content = file_get_contents($key[0]);
+        $count = count($key);
+        if (file_exists($key[0])) {
+            $key[0] = file_get_contents($key[0]);
+        }
+        $content = $key[0];
+
+        if ($count === 2) {
+            $passphrase = $key[1];
+        }
+
         $this->headers['alg'] = 'RS256';
-        $this->key = $this->load($content, $key[1]);
+        $this->key = $this->load($content, $passphrase);
     }
 
     private function load($pem, $passphrase = '')

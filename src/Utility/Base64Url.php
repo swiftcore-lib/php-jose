@@ -1,5 +1,5 @@
 <?php
-namespace Swiftcore;
+namespace Swiftcore\Utility;
 
 /**
  * Encode and decode data into Base64 Url Safe.

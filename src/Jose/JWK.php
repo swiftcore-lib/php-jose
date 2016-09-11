@@ -1,7 +1,6 @@
 <?php
 namespace Swiftcore\Jose;
 
-use Swiftcore\Exception\InvalidJwkException;
 use Swiftcore\Jose\Element\Headers;
 
 class JWK

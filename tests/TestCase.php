@@ -13,9 +13,4 @@ class TestCase extends \PHPUnit_Framework_TestCase
     {
         parent::tearDown();
     }
-
-    protected function getkeys()
-    {
-        $rsaPrivate1 = file_get_contents(BASE_PATH . '/keys/rsa_private.pem');
-    }
 }
