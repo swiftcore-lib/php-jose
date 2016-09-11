@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/swiftcore-lib/php-jose.svg?branch=develop)](https://travis-ci.org/swiftcore-lib/php-jose)
 [![Coverage Status](https://coveralls.io/repos/github/swiftcore-lib/php-jose/badge.svg?branch=develop)](https://coveralls.io/github/swiftcore-lib/php-jose?branch=develop)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/swiftcore-lib/php-jose/master/badge.svg)](https://travis-ci.org/swiftcore-lib/php-jose)
 
 This library provides the pure PHP implementation of [Javascript Object Signing and Encryption](https://datatracker.ietf.org/wg/jose/documents/) that provides tremendous performance.
 
