@@ -1,6 +1,7 @@
 #Travis CI configuration (https://travis-ci.org/)
 language: php
 sudo: false
+dist: trusty
 matrix:
     fast_finish: true
     include:
