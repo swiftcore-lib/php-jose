@@ -6,6 +6,7 @@ use Swiftcore\Jose\Tests\TestCase;
 abstract class RFC7520 extends TestCase
 {
     protected $rfc7520PrivateKey;
+    protected $rfc7520PublicKey;
 
     public function setUp()
     {
@@ -101,6 +102,14 @@ abstract class RFC7520 extends TestCase
                  ZBKCQsMf3HaEGBjTVJs_jcK8-TRXvaKe-7ZMaQj8VfBdYkssbu0NKDDh
                  jJ-GtiseaDVWt7dcH0cfwxgFUHpQh7FoCrjFJ6h6ZEpMF6xmujs4qMpP
                  z8aaI4"
+        ];
+
+        $this->rfc7520PublicKey = [
+            "kty" => $this->rfc7520PrivateKey['kty'],
+            "kid" => $this->rfc7520PrivateKey['kid'],
+            "use" => $this->rfc7520PrivateKey['use'],
+            "n" => $this->rfc7520PrivateKey['n'],
+            "e" => $this->rfc7520PrivateKey['e'],
         ];
     }
 }
