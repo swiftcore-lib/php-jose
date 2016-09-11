@@ -20,6 +20,7 @@ before_script:
 
 script:
     - composer test-with-coverage
+    - composer benchmark
 
 after_success:
   - travis_retry vendor/bin/coveralls -v
