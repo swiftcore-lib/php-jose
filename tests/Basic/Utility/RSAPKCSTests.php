@@ -1,5 +1,5 @@
 <?php
-namespace Swiftcore\Jose\Tests\Utility;
+namespace Swiftcore\Jose\Tests\Basic\Utility;
 
 use Swiftcore\Jose\Tests\TestCase;
 use Swiftcore\Utility\Base64Url;

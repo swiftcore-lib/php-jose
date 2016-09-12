@@ -5,6 +5,10 @@ use Swiftcore\Jose\Exception\InvalidJwkException;
 use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
 use Swiftcore\Jose\JWK;
 
+/**
+ * Class RSAKey
+ * @package Swiftcore\Jose\Key
+ */
 final class RSAKey extends JWK
 {
     /**
@@ -45,6 +49,17 @@ final class RSAKey extends JWK
     private $oth;
 
     public $res;
+
+    const RSA_OPENSSL_JOSE_MAPPING = [
+        'n' => 'n',
+        'd' => 'd',
+        'e' => 'e',
+        'p' => 'p',
+        'q' => 'q',
+        'dmp1' => 'dp',
+        'dmq1' => 'dq',
+        'iqmp' => 'qi',
+    ];
 
     /**
      * RSAKey constructor.
@@ -136,9 +151,6 @@ final class RSAKey extends JWK
         }
 
         $count = count($key);
-        if (!$count) {
-            throw new InvalidRSAKeyArgumentException(['RSA Key must not be empty.']);
-        }
         $pem = $key[0];
         if (file_exists($pem)) {
             $pem = file_get_contents($pem);
@@ -154,8 +166,8 @@ final class RSAKey extends JWK
 
     /**
      * @param $pem
-     * @param string $passphrase
-     * @return bool|resource
+     * @param $passphrase
+     * @return $this
      */
     public function loadPEM($pem, $passphrase)
     {
@@ -167,8 +179,15 @@ final class RSAKey extends JWK
         if (false === $res) {
             throw new InvalidRSAKeyArgumentException(["RSA key seems to be invalid."], 'Failed to load RSA Key');
         }
+        $details = openssl_pkey_get_details($res);
+        foreach ($details['rsa'] as $opensslName => $value) {
+            $joseName = self::RSA_OPENSSL_JOSE_MAPPING[$opensslName];
+            $this->$joseName = $value;
+        }
 
         $this->res = $res;
+
+        return $this;
     }
 
     /**

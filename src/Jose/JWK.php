@@ -1,8 +1,6 @@
 <?php
 namespace Swiftcore\Jose;
 
-use Swiftcore\Jose\Element\Headers;
-
 /**
  * Class of JWK implementation
  *
@@ -18,7 +16,7 @@ class JWK
     protected $kty;
     protected $x5c;
 
-    public static function create($type = '', $key)
+    public static function create($type, $key)
     {
         $class = __NAMESPACE__ . '\Key\\' . strtoupper($type).'Key';
         return new $class($key);

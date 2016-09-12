@@ -2,7 +2,6 @@
 namespace Swiftcore\Jose\Algorithm;
 
 use Swiftcore\Jose\JWA;
-use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
 use Swiftcore\Jose\Key\RSAKey;
 

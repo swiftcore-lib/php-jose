@@ -1,5 +1,6 @@
 <?php
 namespace Swiftcore\Jose\Exception;
+
 use Swiftcore\Utility\ErrorBag;
 
 class InvalidRSAKeyArgumentException extends \InvalidArgumentException implements SwiftcoreJoseException, ErrorBag

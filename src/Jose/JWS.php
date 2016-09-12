@@ -2,9 +2,6 @@
 namespace Swiftcore\Jose;
 
 use Swiftcore\Jose\Algorithm\RS;
-use Swiftcore\Jose\Algorithm\RS256;
-use Swiftcore\Jose\Algorithm\RS384;
-use Swiftcore\Jose\Algorithm\RS512;
 use Swiftcore\Jose\Element\Headers;
 use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\Element\Signature;
@@ -32,11 +29,11 @@ class JWS
      *
      * It is responsible for signature signing and/or verifying.
      *
-     * @see \Swiftcore\Jose\Algorithm\Signature\RS256    RS256
-     * @see \Swiftcore\Jose\Algorithm\Signature\RS384    RS384
-     * @see \Swiftcore\Jose\Algorithm\Signature\RS512    RS512
+     * @see \Swiftcore\Jose\Algorithm\RS256    RS256
+     * @see \Swiftcore\Jose\Algorithm\RS384    RS384
+     * @see \Swiftcore\Jose\Algorithm\RS512    RS512
      *
-     * @var RSASHA
+     * @var RS
      */
     protected $signer;
 
