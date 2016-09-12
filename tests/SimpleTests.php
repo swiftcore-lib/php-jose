@@ -23,8 +23,10 @@ class SimpleTests extends TestCase
 
     public function testJwsRs256SigningWithEncryptedPrivateKey()
     {
-        $jwk = JWK::create('rsa', ['file' => BASE_PATH . '/keys/rsa_private1.pem',
-            'pwd' => '123123']);
+        $jwk = JWK::create('rsa', [
+            'file' => BASE_PATH . '/keys/rsa_private1.pem',
+            'pwd' => '123123'
+        ]);
         $headers = new Headers([
             'alg' => 'RS256',
             'b64' => true,

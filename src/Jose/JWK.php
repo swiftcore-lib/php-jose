@@ -14,11 +14,10 @@ namespace Swiftcore\Jose;
 class JWK
 {
     protected $kty;
-    protected $x5c;
 
-    public static function create($type, $key)
+    public static function create($kty, $key = null)
     {
-        $class = __NAMESPACE__ . '\Key\\' . strtoupper($type).'Key';
+        $class = __NAMESPACE__ . '\Key\\' . strtoupper($kty).'Key';
         return new $class($key);
     }
 }
