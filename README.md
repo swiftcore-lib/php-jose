@@ -4,9 +4,27 @@
 [![Coverage Status](https://coveralls.io/repos/github/swiftcore-lib/php-jose/badge.svg?branch=master)](https://coveralls.io/github/swiftcore-lib/php-jose?branch=master)
 [![PHP 7 ready](http://php7ready.timesplinter.ch/swiftcore-lib/php-jose/master/badge.svg)](https://travis-ci.org/swiftcore-lib/php-jose)
 
-A hihg performance pure PHP implementation of Javascript Object Signing and Encryption (JOSE).
+A high performance pure PHP implementation of Javascript Object Signing and Encryption (JOSE).
 
 Refer to [Wiki](https://github.com/swiftcore-lib/php-jose/wiki) page for more information.
 
+### Notice & Disclaimer
+
+> This library is not yet stable at the moment, API may change without prior notification, please use it at your own risk. 
+> 
+> [Pull Request](https://github.com/swiftcore-lib/php-jose/pulls) are welcome. Please use [GitHub Issues](https://github.com/swiftcore-lib/php-jose/issues) for any issue / problem encoutered.
+
+### Roadmap
+
+* [x] v0.1 (September 2016):
+  * JWS fundamental
+  * JWS RSxxx (SHAxxx with RSA) signing & verifying
+* [ ] v0.2 (October 2016):
+  * JWS HSxxx (Hmac SHA512) signing & verifying
+  * JWS ESxxx (SHAxxx with ECDSA) signing & verifying
+  * JWS PSxxx (SHA256 with RSA and MGF1) signing & verifying
+* [ ] v0.3 (December 2016):
+  * JWE fundamental
+* [ ] And more (Feburary 2016)
 
 
