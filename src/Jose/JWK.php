@@ -7,7 +7,6 @@ class JWK
 {
     public $key;
     public $headers;
-    public $signature;
 
     public static function create(Headers $headers, array $additions = [])
     {

@@ -7,7 +7,7 @@ use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\Element\Signature;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
-use Swiftcore\Jose\RsaKey;
+use Swiftcore\Jose\RSAKey;
 
 class SimpleTests extends TestCase
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Swiftcore\Jose;
 
-final class RsaKey extends JWK
+final class RSAKey extends JWK
 {
     public function __construct($headers, $key = null)
     {
