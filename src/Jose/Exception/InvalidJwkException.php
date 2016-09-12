@@ -1,5 +1,5 @@
 <?php
-namespace Swiftcore\Exception;
+namespace Swiftcore\Jose\Exception;
 
 class InvalidJwkException extends \InvalidArgumentException
 {

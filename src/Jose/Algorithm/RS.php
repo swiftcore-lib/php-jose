@@ -4,7 +4,7 @@ namespace Swiftcore\Jose\Algorithm;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
 
-abstract class RSASHA
+abstract class RS
 {
     protected $method;
 
