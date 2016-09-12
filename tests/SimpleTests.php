@@ -1,19 +1,29 @@
 <?php
 namespace Swiftcore\Jose\Tests;
 
+use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
 use Swiftcore\Utility\Base64Url;
 use Swiftcore\Jose\Element\Headers;
 use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\Element\Signature;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
-use Swiftcore\Jose\RSAKey;
+use Swiftcore\Jose\Key\RSAKey;
 
 class SimpleTests extends TestCase
 {
+    public function testExperiment()
+    {
+        try {
+            $rsaKey = new RSAKey();
+        } catch (InvalidRSAKeyArgumentException $e) {
+            var_dump($e->getErrors());
+        }
+    }
+
     public function testJwsRs256SigningWithEncryptedPrivateKey()
     {
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), ['file' => BASE_PATH . '/keys/rsa_private1.pem',
+        $jwk = JWK::create('rsa', ['file' => BASE_PATH . '/keys/rsa_private1.pem',
             'pwd' => '123123']);
         $headers = new Headers([
             'alg' => 'RS256',
@@ -58,7 +68,7 @@ class SimpleTests extends TestCase
         $this->assertJsonStringEqualsJsonString($expectedPayload, $payload);
 
         // verify signature
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), ['file' => BASE_PATH . '/keys/rsa_public1.pem',
+        $jwk = JWK::create('rsa', ['file' => BASE_PATH . '/keys/rsa_public1.pem',
             'pwd' => '123123']);
         $jws = new JWS(
             $jwk,
@@ -72,7 +82,7 @@ class SimpleTests extends TestCase
 
     public function testJwsRs256SigningWithUnencryptedPrivateKey()
     {
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), [BASE_PATH . '/keys/rsa_unencrypted_private1.pem']);
+        $jwk = JWK::create('rsa', [BASE_PATH . '/keys/rsa_unencrypted_private1.pem']);
         $headers = new Headers([
             'alg' => 'RS256',
             'b64' => true,
@@ -95,7 +105,7 @@ class SimpleTests extends TestCase
     public function testJwsRs256SigningWithUnencryptedPrivateKeyContent()
     {
         $privateKeyContent = file_get_contents(BASE_PATH . '/keys/rsa_unencrypted_private1.pem');
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), [$privateKeyContent]);
+        $jwk = JWK::create('rsa', [$privateKeyContent]);
         $headers = new Headers([
             'alg' => 'RS256',
             'b64' => true,
@@ -135,7 +145,7 @@ class SimpleTests extends TestCase
         ];
         foreach ($methods as $method) {
             $privateKeyContent = file_get_contents(BASE_PATH . '/keys/rsa_unencrypted_private1.pem');
-            $jwk = JWK::create(new Headers(['kty' => 'RSA']), [$privateKeyContent]);
+            $jwk = JWK::create('rsa', [$privateKeyContent]);
             $headers = new Headers([
                 'alg' => $method,
                 'b64' => true,

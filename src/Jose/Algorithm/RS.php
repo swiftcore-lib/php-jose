@@ -1,10 +1,12 @@
 <?php
 namespace Swiftcore\Jose\Algorithm;
 
+use Swiftcore\Jose\JWA;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
+use Swiftcore\Jose\Key\RSAKey;
 
-abstract class RS
+abstract class RS extends JWA
 {
     protected $method;
 
@@ -17,22 +19,22 @@ abstract class RS
         return $this->method;
     }
 
-    public function sign(JWK $jwk, JWS $jws)
+    public function sign(RSAKey $jwk, JWS $jws)
     {
         $payload = strval($jws->payload);
         $protected = strval($jws->protected);
 
         $input = sprintf('%s.%s', $protected, $payload);
-        openssl_sign($input, $signature, $jwk->key, $this->method);
+        openssl_sign($input, $signature, $jwk->res, $this->method);
         return $signature;
     }
 
-    public function verify(JWK $jwk, JWS $jws)
+    public function verify(RSAKey $jwk, JWS $jws)
     {
         $signature = $jws->signature->raw();
         $input = sprintf('%s.%s', $jws->protected, $jws->payload);
 
-        $verified = openssl_verify($input, $signature, $jwk->key, $this->method);
+        $verified = openssl_verify($input, $signature, $jwk->res, $this->method);
 
         return 1 === $verified;
     }

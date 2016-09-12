@@ -19,7 +19,7 @@ class Rs256SignatureTests extends RFC7520
         }, $rawKey);
         $privateKeyContent = strval(new RSAPKCS($rawKey) . PHP_EOL);
 
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), [$privateKeyContent]);
+        $jwk = JWK::create('rsa', $privateKeyContent);
 
         $headers = new Headers([
             'alg' => 'RS256',
@@ -64,7 +64,7 @@ class Rs256SignatureTests extends RFC7520
         $this->assertJsonStringEqualsJsonString($expectedHeaders, $headers);
 
         // verify signature
-        $jwk = JWK::create(new Headers(['kty' => 'RSA']), [$publicKeyContent]);
+        $jwk = JWK::create('rsa', $publicKeyContent);
         $jws = new JWS(
             $jwk,
             new Payload($payload),

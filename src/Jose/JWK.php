@@ -15,12 +15,12 @@ use Swiftcore\Jose\Element\Headers;
  */
 class JWK
 {
-    protected $data;
-    protected $registries = ['kty', 'use', 'key_ops', 'alg', 'kid', 'x5u', 'x5c', 'x5t', 'x5t#S256'];
+    protected $kty;
+    protected $x5c;
 
-    public static function create(Headers $headers, array $additions = [])
+    public static function create($type = '', $key)
     {
-        $keyType = __NAMESPACE__ . '\\' . ucfirst(strtolower($headers['kty'])).'Key';
-        return new $keyType($headers, $additions);
+        $class = __NAMESPACE__ . '\Key\\' . strtoupper($type).'Key';
+        return new $class($key);
     }
 }
