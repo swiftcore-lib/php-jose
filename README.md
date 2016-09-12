@@ -18,13 +18,14 @@ Refer to [Wiki](https://github.com/swiftcore-lib/php-jose/wiki) page for more in
 
 * [x] v0.1 (September 2016):
   * JWS fundamental
-  * JWS RSxxx (SHAxxx with RSA) signing & verifying
+  * JWS RSxxx (SHAxxx with RSA)
 * [ ] v0.2 (October 2016):
-  * JWS HSxxx (Hmac SHA512) signing & verifying
-  * JWS ESxxx (SHAxxx with ECDSA) signing & verifying
-  * JWS PSxxx (SHA256 with RSA and MGF1) signing & verifying
+  * JWS HSxxx (Hmac SHA512)
+  * JWS ESxxx (SHAxxx with ECDSA)
+  * JWS PSxxx (SHA256 with RSA and MGF1)
+  * Full documentation of JWS
 * [ ] v0.3 (December 2016):
   * JWE fundamental
-* [ ] And more (Feburary 2016)
+* [ ] And more...
 
 
