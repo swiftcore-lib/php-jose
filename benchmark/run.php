@@ -12,12 +12,12 @@ use Swiftcore\Jose\Element\Signature;
 
 $results = [];
 $jwkPrivate = JWK::create(
-    new Headers(['kty' => 'RSA']),
+    'rsa',
     ['file' => BASE_PATH . '/tests/keys/rsa_private1.pem',
         'pwd' => '123123']
 );
 $jwkPublic = JWK::create(
-    new Headers(['kty' => 'RSA']),
+    'rsa',
     ['file' => BASE_PATH . '/tests/keys/rsa_public1.pem']
 );
 
