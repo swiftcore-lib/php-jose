@@ -24,7 +24,7 @@
         }
     },
     "scripts": {
-        "benchmark": "performance/run.php",
+        "benchmark": "benchmark/run.php",
         "test": "vendor/bin/phpunit",
         "test-with-coverage": "vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml"
     },
