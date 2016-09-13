@@ -1,10 +1,10 @@
 <?php
 namespace Swiftcore\Jose\Algorithm;
 
-class RS256 extends RS
+class HS512 extends HS
 {
     public function __construct()
     {
-        $this->method('sha256');
+        $this->method('sha512');
     }
 }

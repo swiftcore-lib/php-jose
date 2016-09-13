@@ -5,6 +5,6 @@ class RS512 extends RS
 {
     public function __construct()
     {
-        $this->method('SHA512');
+        $this->method('sha512');
     }
 }

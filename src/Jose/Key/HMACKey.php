@@ -11,7 +11,7 @@ use Swiftcore\Jose\JWK;
  */
 final class HMACKey extends JWK
 {
-    private $k;
+    public $k;
 
     public function __construct($key = null)
     {

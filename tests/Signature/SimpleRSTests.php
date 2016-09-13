@@ -1,27 +1,23 @@
 <?php
-namespace Swiftcore\Jose\Tests;
+namespace Swiftcore\Jose\Tests\JWS;
 
-use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
-use Swiftcore\Utility\Base64Url;
 use Swiftcore\Jose\Element\Headers;
 use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\Element\Signature;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
-use Swiftcore\Jose\Key\RSAKey;
+use Swiftcore\Jose\Tests\TestCase;
+use Swiftcore\Utility\Base64Url;
 
-class SimpleTests extends TestCase
+class SimpleRSTests extends TestCase
 {
     public function testExperiment()
     {
-        try {
-            $rsaKey = new RSAKey();
-        } catch (InvalidRSAKeyArgumentException $e) {
-            var_dump($e->getErrors());
-        }
+//        $algos = hash_algos();
+//        print_r($algos);
     }
 
-    public function testJwsRs256SigningWithEncryptedPrivateKey()
+    public function testJwsRS256SigningWithEncryptedPrivateKey()
     {
         $jwk = JWK::create('rsa', [
             'file' => BASE_PATH . '/keys/rsa_private1.pem',
@@ -46,7 +42,7 @@ class SimpleTests extends TestCase
         $this->assertEquals($expectedSignature, strval($jws->signature));
     }
 
-    public function testJwsRs256Verfying()
+    public function testJwsRS256Verfying()
     {
         $jwsCompact = 'eyJhbGciOiJSUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.P2rxkB1tbnABHAbhKafL3MgkXCVszkfTrZrtEzAEqY9azVKI90v3wz0Peh-WIt7BC_GTaoQx91bz2tfEYtZm2sAxlbSzEc1JK4FlgpQw8UdLLkbw2pi73ABVo675Z2OPjQuD_hlDhLp0jisE0Z65epusCc45ol9HQSRCwZNUZLf5RK10OtsvCmSwxEcrd0INOJbb_MibTg40d49iJ74KZHv5taCBPv9ilqXmjwlQ1eGpfsg7XZtn4sPmIzkFvFTMNEXCIRn5AX20uRtjNqMKClFOPkQdNE_-YHmacrfL03EJDsJDcGATCWrMtbs09u1lfMSvnncw0HLcYze74FTfaA';
         $expectedHeaders = json_encode([
@@ -82,7 +78,7 @@ class SimpleTests extends TestCase
         $this->assertTrue($jws->verified);
     }
 
-    public function testJwsRs256SigningWithUnencryptedPrivateKey()
+    public function testJwsRS256SigningWithUnencryptedPrivateKey()
     {
         $jwk = JWK::create('rsa', [BASE_PATH . '/keys/rsa_unencrypted_private1.pem']);
         $headers = new Headers([
@@ -104,7 +100,7 @@ class SimpleTests extends TestCase
         $this->assertEquals($expectedSignature, strval($jws->signature));
     }
 
-    public function testJwsRs256SigningWithUnencryptedPrivateKeyContent()
+    public function testJwsRS256SigningWithUnencryptedPrivateKeyContent()
     {
         $privateKeyContent = file_get_contents(BASE_PATH . '/keys/rsa_unencrypted_private1.pem');
         $jwk = JWK::create('rsa', [$privateKeyContent]);
@@ -127,7 +123,7 @@ class SimpleTests extends TestCase
         $this->assertEquals($expectedSignature, strval($jws->signature));
     }
 
-    public function testAllJwsRSSHAMethods()
+    public function testAllJwsRSMethods()
     {
         $methods = [
             'RS256' => 'RS256',

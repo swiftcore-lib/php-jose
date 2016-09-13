@@ -5,6 +5,6 @@ class RS384 extends RS
 {
     public function __construct()
     {
-        $this->method('SHA384');
+        $this->method('sha384');
     }
 }
