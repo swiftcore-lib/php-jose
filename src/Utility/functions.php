@@ -7,8 +7,8 @@ if (!function_exists('gmp_import')) {
 }
 
 if (!function_exists('gmp_export')) {
-    function gmp_export($gmpnumber)
+    function gmp_export($gmp)
     {
-        return hex2bin(gmp_strval($gmpnumber, 16));
+        return hex2bin(gmp_strval($gmp, 16));
     }
 }
