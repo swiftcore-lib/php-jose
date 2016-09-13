@@ -1,6 +1,8 @@
 #Travis CI configuration (https://travis-ci.org/)
 language: php
-sudo: false
+sudo: required
+dist: trusty
+group: stable
 php:
   - 5.6
   - 7.0
