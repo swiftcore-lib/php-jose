@@ -10,6 +10,8 @@ use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\JWS;
 use Swiftcore\Jose\Element\Signature;
 
+print_r(get_loaded_extensions());
+
 $results = [];
 $jwkPrivate = JWK::create(
     'rsa',
