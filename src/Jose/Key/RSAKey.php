@@ -50,7 +50,7 @@ final class RSAKey extends JWK
 
     public $res;
 
-    const RSA_OPENSSL_JOSE_MAPPING = [
+    public static $RSA_OPENSSL_JOSE_MAPPING = [
         'n' => 'n',
         'd' => 'd',
         'e' => 'e',
@@ -181,7 +181,7 @@ final class RSAKey extends JWK
         }
         $details = openssl_pkey_get_details($res);
         foreach ($details['rsa'] as $opensslName => $value) {
-            $joseName = self::RSA_OPENSSL_JOSE_MAPPING[$opensslName];
+            $joseName = self::$RSA_OPENSSL_JOSE_MAPPING[$opensslName];
             $this->$joseName = $value;
         }
 
