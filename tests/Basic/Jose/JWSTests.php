@@ -16,5 +16,8 @@ class JWSTests extends TestCase
         $publicKey = new RSAKey(BASE_PATH . '/keys/rsa_public1.pem', '123123');
         $isPublicKey = $publicKey->isPublicKey();
         $this->assertTrue($isPublicKey);
+
+        $key = new RSAKey();
+        $this->assertEquals(RSAKey::class, get_class($key));
     }
 }

@@ -20,9 +20,9 @@ abstract class HS extends JWA
     public function verify(JWK $jwk, JWS $jws)
     {
         $signature = $jws->signature->raw();
+        $expected = $this->sign($jwk, $jws);
+        $verified = hash_equals($expected, $signature);
 
-        $verified = hash_equals($this->sign(jwk, $jws), $signature);
-
-        return 1 === $verified;
+        return $verified;
     }
 }
