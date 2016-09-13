@@ -12,11 +12,19 @@ php:
   - hhvm-nightly
 
 matrix:
-    allow_failures:
-        - php: nightly
-        - php: hhvm-nightly
+  fast_finish: true
+  include:
+    - php: hhvm
+      env: FORCE_XDEBUG_ENABLE=true
+    - php: hhvm-nightly
+      env: FORCE_XDEBUG_ENABLE=true
+  allow_failures:
+    - php: nightly
+    - php: hhvm-nightly
 
 before_script:
+    # https://github.com/travis-ci/travis-ci/issues/2980
+    - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm && $FORCE_XDEBUG_ENABLE == true ]]; then echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --dev
 
