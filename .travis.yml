@@ -35,8 +35,8 @@ matrix:
 before_script:
     # https://github.com/travis-ci/travis-ci/issues/2980
     - echo $TRAVIS_PHP_VERSION;
-    - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm           && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable HHVM Xdebug.";   echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
-    - if [[ $TRAVIS_PHP_VERSION =~ ^(nightly|7.1)$ && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable PHP Xdebug.";    pecl install xdebug; fi
+    - if [[ $PHP_VERSION =~ ^hhvm           && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable HHVM Xdebug.";   echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
+    - if [[ $PHP_VERSION =~ ^(php-7\.1)$ && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable PHP Xdebug.";    pecl install xdebug; fi
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --dev
 
@@ -45,4 +45,4 @@ script:
     - composer benchmark
 
 after_success:
-  - travis_retry vendor/bin/coveralls -v
+  - if [[ $PHP_VERSION =~ ^php ]]; then echo "Process with coveralls."; travis_retry vendor/bin/coveralls -v; fi
