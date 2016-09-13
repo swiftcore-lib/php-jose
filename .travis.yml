@@ -1,6 +1,7 @@
 #Travis CI configuration (https://travis-ci.org/)
 language: php
-sudo: false
+sudo: required
+dist: trusty
 
 php:
   - 5.6
@@ -12,9 +13,8 @@ php:
 
 matrix:
     allow_failures:
-        - php: hhvm
-        - php: hhvm-nightly
         - php: nightly
+        - php: hhvm-nightly
 
 before_script:
     - travis_retry composer self-update
