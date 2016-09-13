@@ -16,7 +16,10 @@
     "autoload": {
         "psr-4": {
             "Swiftcore\\": "src/"
-        }
+        },
+        "files": [
+            "src/Utility/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

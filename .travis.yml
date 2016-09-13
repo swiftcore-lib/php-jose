@@ -1,25 +1,18 @@
 #Travis CI configuration (https://travis-ci.org/)
 language: php
-sudo: required
-dist: trusty
-group: stable
+sudo: false
+
 php:
   - 5.6
   - 7.0
   - 7.1
-  - hhvm-3.12
-  - hhvm-3.13
-  - hhvm-3.14
-  - hhvm-3.15
   - nightly
+  - hhvm
   - hhvm-nightly
 
 matrix:
     allow_failures:
-        - php: hhvm-3.12
-        - php: hhvm-3.13
-        - php: hhvm-3.14
-        - php: hhvm-3.15
+        - php: hhvm
         - php: hhvm-nightly
         - php: nightly
 
