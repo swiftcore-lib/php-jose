@@ -7,15 +7,27 @@ matrix:
   fast_finish: true
   include:
     - php: 5.6
+      env:
+       - PHP_VERSION=php-5.6
     - php: 7.0
+      env:
+       - PHP_VERSION=php-7.0
     - php: 7.1
-      env: FORCE_XDEBUG_ENABLE=true
+      env:
+        - PHP_VERSION=php-7.1
+        - FORCE_XDEBUG_ENABLE=true
     - php: nightly
-      env: FORCE_XDEBUG_ENABLE=true
+      env:
+        - PHP_VERSION=php-nightly
+        - FORCE_XDEBUG_ENABLE=true
     - php: hhvm
-      env: FORCE_XDEBUG_ENABLE=true
+      env:
+        - PHP_VERSION=hhvm-stable
+        - FORCE_XDEBUG_ENABLE=true
     - php: hhvm-nightly
-      env: FORCE_XDEBUG_ENABLE=true
+      env:
+        - PHP_VERSION=hhvm-nightly
+        - FORCE_XDEBUG_ENABLE=true
   allow_failures:
     - php: nightly
     - php: hhvm-nightly
