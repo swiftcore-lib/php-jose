@@ -23,8 +23,8 @@ matrix:
 before_script:
     # https://github.com/travis-ci/travis-ci/issues/2980
     - echo $TRAVIS_PHP_VERSION;
-    - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm && $FORCE_XDEBUG_ENABLE == true ]]; then echo "HHVM Xdebug Enabling"; echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
-    - if [[ $TRAVIS_PHP_VERSION =~ ^php && $FORCE_XDEBUG_ENABLE == true ]]; then echo "PHP Xdebug Enabling"; pecl install xdebug; fi
+    - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm           && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable HHVM Xdebug.";   echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
+    - if [[ $TRAVIS_PHP_VERSION =~ ^(nightly|7.1)$ && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable PHP Xdebug.";    pecl install xdebug; fi
     - travis_retry composer self-update
     - travis_retry composer install --no-interaction --dev
 
