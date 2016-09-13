@@ -10,11 +10,12 @@ matrix:
     - php: 7.0
     - php: 7.1
       env: FORCE_XDEBUG_ENABLE=true
+    - php: nightly
+      env: FORCE_XDEBUG_ENABLE=true
     - php: hhvm
       env: FORCE_XDEBUG_ENABLE=true
     - php: hhvm-nightly
       env: FORCE_XDEBUG_ENABLE=true
-    - php: nightly
   allow_failures:
     - php: nightly
     - php: hhvm-nightly
