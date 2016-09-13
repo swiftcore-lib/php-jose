@@ -28,8 +28,8 @@
     },
     "scripts": {
         "benchmark": "benchmark/run.php",
-        "test": "vendor/bin/phpunit",
-        "test-with-coverage": "vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml"
+        "test": "vendor/bin/phpunit --verbose --colors=always",
+        "test-with-coverage": "vendor/bin/phpunit --verbose --colors=always --coverage-text --coverage-clover=build/logs/clover.xml"
     },
     "license": "MIT License",
     "authors": [
