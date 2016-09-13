@@ -21,7 +21,6 @@
                    processUncoveredFilesFromWhitelist="false">
             <directory suffix=".php">./</directory>
             <exclude>
-                <file>./src/Utility/functions.php</file>
                 <directory>./benchmark</directory>
                 <directory>./examples</directory>
                 <directory>./tests</directory>

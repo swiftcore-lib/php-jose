@@ -18,7 +18,7 @@
             "Swiftcore\\": "src/"
         },
         "files": [
-            "src/Utility/functions.php"
+            "src/Utility/Compatibility.php"
         ]
     },
     "autoload-dev": {
