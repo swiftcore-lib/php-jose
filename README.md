@@ -19,13 +19,16 @@ Refer to [Wiki](https://github.com/swiftcore-lib/php-jose/wiki) page for more in
 * [x] v0.1 (September 2016):
   * JWS fundamental
   * JWS RSxxx (SHAxxx with RSA)
-* [ ] v0.2 (October 2016):
-  * JWS HSxxx (Hmac SHA512)
+* [ ] v0.2 (September 2016):
+  * JWS HSxxx (HMAC SHAxxx)
+* [ ] v0.3 (September 2016)
   * JWS ESxxx (SHAxxx with ECDSA)
-  * JWS PSxxx (SHA256 with RSA and MGF1)
+* [ ] v0.4 (October 2016)
+  * JWS PSxxx (SHAxxx with RSA and MGF1)
+* [ ] v1.0 (October 2016)
   * Full documentation of JWS
-* [ ] v0.3 (December 2016):
-  * JWE fundamental
+* [ ] v2.1 (December 2016):
+  * JWE Implementation
 * [ ] And more...
 
 
