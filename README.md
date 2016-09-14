@@ -16,8 +16,6 @@ Preferrable way to install via Composer:
 composer require swiftcore-lib/php-jose
 ```
 
-composer require spomky-labs/jose
-
 ## Notice & Disclaimer
 
 > This library is not yet stable at the moment, API may change without prior notification, please use it at your own risk. 
