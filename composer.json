@@ -10,12 +10,16 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.5",
-        "satooshi/php-coveralls": "^1.0"
+        "satooshi/php-coveralls": "^1.0",
+        "phpdocumentor/phpdocumentor": "^2.9"
     },
     "autoload": {
         "psr-4": {
             "Swiftcore\\": "src/"
-        }
+        },
+        "files": [
+            "src/Utility/Compatibility.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -23,9 +27,9 @@
         }
     },
     "scripts": {
-        "benchmark": "performance/run.php",
-        "test": "vendor/bin/phpunit",
-        "test-with-coverage": "vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml"
+        "benchmark": "benchmark/run.php",
+        "test": "vendor/bin/phpunit --verbose --colors=always",
+        "test-with-coverage": "vendor/bin/phpunit --verbose --colors=always --coverage-text --coverage-clover=build/logs/clover.xml"
     },
     "license": "MIT License",
     "authors": [

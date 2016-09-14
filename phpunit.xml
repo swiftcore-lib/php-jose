@@ -21,7 +21,9 @@
                    processUncoveredFilesFromWhitelist="false">
             <directory suffix=".php">./</directory>
             <exclude>
-                <directory>./performance</directory>
+                <file>./src/Utility/Compatibility.php</file>
+                <directory>./benchmark</directory>
+                <directory>./examples</directory>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
             </exclude>

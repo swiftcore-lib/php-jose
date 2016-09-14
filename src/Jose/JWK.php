@@ -1,17 +1,23 @@
 <?php
 namespace Swiftcore\Jose;
 
-use Swiftcore\Jose\Element\Headers;
-
+/**
+ * Class of JWK implementation
+ *
+ * Refer to https://tools.ietf.org/html/rfc7517 for more information.
+ *
+ * A JSON Web Key (JWK) is a JavaScript Object Notation (JSON) data
+ * structure that represents a cryptographic key.
+ *
+ * @package Swiftcore\Jose
+ */
 class JWK
 {
-    public $key;
-    public $headers;
-    public $signature;
+    protected $kty;
 
-    public static function create(Headers $headers, array $additions = [])
+    public static function create($kty, $key = null)
     {
-        $keyType = __NAMESPACE__ . '\\' . ucfirst(strtolower($headers['kty'])).'Key';
-        return new $keyType($headers, $additions);
+        $class = __NAMESPACE__ . '\Key\\' . strtoupper($kty).'Key';
+        return new $class($key);
     }
 }
