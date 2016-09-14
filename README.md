@@ -29,7 +29,7 @@ composer require spomky-labs/jose
 * [x] v0.1 (September 2016):
   * JWS fundamental
   * JWS RSxxx (SHAxxx with RSA)
-* [ ] v0.2 (September 2016):
+* [x] v0.2 (September 2016):
   * JWS HSxxx (HMAC SHAxxx)
 * [ ] v0.3 (September 2016)
   * JWS ESxxx (SHAxxx with ECDSA)
