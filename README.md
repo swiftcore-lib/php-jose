@@ -8,13 +8,23 @@ A high performance pure PHP implementation of Javascript Object Signing and Encr
 
 Refer to [Wiki](https://github.com/swiftcore-lib/php-jose/wiki) page for more information.
 
-### Notice & Disclaimer
+## Installation
+
+Preferrable way to install via Composer:
+
+```
+composer require swiftcore-lib/php-jose
+```
+
+composer require spomky-labs/jose
+
+## Notice & Disclaimer
 
 > This library is not yet stable at the moment, API may change without prior notification, please use it at your own risk. 
 > 
 > [Pull Request](https://github.com/swiftcore-lib/php-jose/pulls) are welcome. Please use [GitHub Issues](https://github.com/swiftcore-lib/php-jose/issues) for any issue / problem encoutered.
 
-### Roadmap
+## Roadmap
 
 * [x] v0.1 (September 2016):
   * JWS fundamental
