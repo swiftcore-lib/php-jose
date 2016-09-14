@@ -26,7 +26,7 @@ class SimpleRSATests extends TestCase
 
         $expectedHeaders = 'eyJhbGciOiJIUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0';
         $expectedPayload = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
-        $expectedSignature = 'z0T35NxshKcYCU1jBY_inp8pI4Lzr08UUuP0fQs9TlI';
+        $expectedSignature = 'P3oiYpuzwudE0rhCSoSF_BjN4rKQmN993NVMpVR5aL4';
 
         $this->assertEquals($expectedHeaders, strval($jws->protected));
         $this->assertEquals($expectedPayload, strval($jws->payload));
@@ -35,7 +35,7 @@ class SimpleRSATests extends TestCase
 
     public function testJwsHS256Verifying()
     {
-        $jwsCompact = 'eyJhbGciOiJIUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.z0T35NxshKcYCU1jBY_inp8pI4Lzr08UUuP0fQs9TlI';
+        $jwsCompact = 'eyJhbGciOiJIUzI1NiIsImI2NCI6dHJ1ZSwiY3JpdCI6WyJiNjQiLCJhbGciXX0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.P3oiYpuzwudE0rhCSoSF_BjN4rKQmN993NVMpVR5aL4';
         $expectedHeaders = json_encode([
             'alg' => 'HS256',
             'b64' => true,
@@ -82,12 +82,11 @@ class SimpleRSATests extends TestCase
         ];
         $expectedPayload = 'eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9';
         $expectedSignature = [
-            'HS256' => 'z0T35NxshKcYCU1jBY_inp8pI4Lzr08UUuP0fQs9TlI',
-            'HS384' => 'DlIEB_AO13juJyJThI9hFzbJ6tJ3N_GpLNRQ20kui8DgEKQ9D6NnOqfE0vVvUcf0',
-            'HS512' => '0dyNt9d7vcnHiWU174hQ9M6jaIXX90pHjoGAi8YhYbflIkHeWRm7hAOL9Wr8uGBp3dvzRAxX3E-MIZ0l0ljVUQ',
+            'HS256' => 'P3oiYpuzwudE0rhCSoSF_BjN4rKQmN993NVMpVR5aL4',
+            'HS384' => 'CfF-c5IDC8rKn-2im0Gzd-GZzPsL6RK0G30trHBvHVLShsizdkQepK5doPa6P7XG',
+            'HS512' => 'pe5XPYmN49583vNoB9O9NwKbaLhiZMmFV-2Te8299tOO6bpHNvwIdY5wlR_TZVe9G3RbRXuxg3QvE_dfDhm4Uw',
         ];
         foreach ($methods as $method) {
-            $privateKeyContent = file_get_contents(BASE_PATH . '/keys/rsa_unencrypted_private1.pem');
             $jwk = JWK::create('hmac', 'something');
             $headers = new Headers([
                 'alg' => $method,

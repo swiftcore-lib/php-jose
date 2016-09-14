@@ -4,6 +4,7 @@ namespace Swiftcore\Jose\Key;
 use Swiftcore\Jose\Exception\InvalidJwkException;
 use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
 use Swiftcore\Jose\JWK;
+use Swiftcore\Utility\Base64Url;
 
 /**
  * Class RSAKey
@@ -15,6 +16,6 @@ final class HMACKey extends JWK
 
     public function __construct($key = null)
     {
-        $this->k = $key;
+        $this->k = Base64Url::decode($key);
     }
 }
