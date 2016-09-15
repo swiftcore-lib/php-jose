@@ -15,7 +15,6 @@ class ES512SignatureTests extends RFC7520
 {
     public function testSigning()
     {
-        print_r(openssl_get_md_methods());exit;
         $rawKey = $this->rfc7520ECPrivateKey;
         $privateKeyContent = strval(new ECPKCS($rawKey) . PHP_EOL);
 
