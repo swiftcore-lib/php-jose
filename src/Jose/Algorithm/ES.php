@@ -36,9 +36,6 @@ abstract class ES extends JWA
 
         $signature = $jws->signature->raw();
         $signature = bin2hex($signature);
-        if (mb_strlen($signature, '8bit') !== 2 * $this->length()) {
-            return false;
-        }
         $R = mb_substr($signature, 0, $this->length(), '8bit');
         $S = mb_substr($signature, $this->length(), null, '8bit');
 

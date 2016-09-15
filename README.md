@@ -40,3 +40,8 @@ composer require swiftcore-lib/php-jose
 * [ ] And more...
 
 
+## Known Issue
+
+* `mbstring.func_overload` may result `strlen()` unexpected result
+ 
+ 

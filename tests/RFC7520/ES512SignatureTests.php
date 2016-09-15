@@ -40,7 +40,26 @@ class ES512SignatureTests extends RFC7520
 
         $this->assertEquals($expectedHeaders, strval($jws->protected));
         $this->assertEquals($expectedPayload, strval($jws->payload));
-//        $this->assertEquals($expectedSignature, strval($jws->signature));
+
+        $jwsCompact = sprintf('%s.%s.%s', $jws->protected, $jws->payload, $jws->signature);
+        $parts =  explode('.', $jwsCompact);
+        $this->assertCount(3, $parts);
+        foreach ($parts as &$part) {
+            $part = Base64Url::decode($part);
+            $this->assertNotFalse($part);
+        }
+
+        $rawKey = $this->rfc7520ECPublicKey;
+        $publicKeyContent = strval(new ECPKCS($rawKey) . PHP_EOL);
+        $jwk = JWK::create('ec', $publicKeyContent);
+        $jws = new JWS(
+            $jwk,
+            $payload,
+            $headers,
+            new Signature($parts[2])
+        );
+        $jws = $jws->verify();
+        $this->assertTrue($jws->verified);
     }
 
     public function testVerifying()
@@ -75,6 +94,7 @@ class ES512SignatureTests extends RFC7520
         list($headers, $payload, $signature) = $parts;
         $this->assertJson($headers);
         $this->assertJsonStringEqualsJsonString($expectedHeaders, $headers);
+        $this->assertEquals($expectedPayload, $payload);
 
         // verify signature
         $jwk = JWK::create('ec', $publicKeyContent);
