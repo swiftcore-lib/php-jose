@@ -1,0 +1,48 @@
+#Travis CI configuration (https://travis-ci.org/)
+language: php
+sudo: required
+dist: trusty
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.6
+      env:
+       - PHP_VERSION=php-5.6
+    - php: 7.0
+      env:
+       - PHP_VERSION=php-7.0
+    - php: 7.1
+      env:
+        - PHP_VERSION=php-7.1
+        - FORCE_XDEBUG_ENABLE=true
+    - php: nightly
+      env:
+        - PHP_VERSION=php-nightly
+        - FORCE_XDEBUG_ENABLE=true
+    - php: hhvm
+      env:
+        - PHP_VERSION=hhvm-stable
+        - FORCE_XDEBUG_ENABLE=true
+    - php: hhvm-nightly
+      env:
+        - PHP_VERSION=hhvm-nightly
+        - FORCE_XDEBUG_ENABLE=true
+  allow_failures:
+    - php: nightly
+    - php: hhvm-nightly
+
+before_script:
+    # https://github.com/travis-ci/travis-ci/issues/2980
+    - echo $TRAVIS_PHP_VERSION;
+    - if [[ $PHP_VERSION =~ ^hhvm           && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable HHVM Xdebug.";   echo 'xdebug.enable = On' >> /etc/hhvm/php.ini; fi
+    - if [[ $PHP_VERSION =~ ^(php-7\.1)$ && $FORCE_XDEBUG_ENABLE ]]; then echo "Enable PHP Xdebug.";    pecl install xdebug; fi
+    - travis_retry composer self-update
+    - travis_retry composer install --no-interaction --dev
+
+script:
+    - composer test-with-coverage
+    - composer benchmark
+
+after_success:
+  - if [[ $PHP_VERSION =~ ^php ]]; then echo "Process with coveralls."; travis_retry vendor/bin/coveralls -v; fi
