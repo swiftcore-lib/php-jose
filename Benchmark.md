@@ -18,8 +18,8 @@ Following are the result of running on (old) Mac mini (Late 2012) with following
 PHP 7.0.10 (cli) (built: Aug 21 2016 19:14:33) ( NTS )
 Copyright (c) 1997-2016 The PHP Group
 Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
-    with Xdebug v2.4.1, Copyright (c) 2002-2016, by Derick Rethans
 ```
+
 
 ## Result
 
