@@ -14,6 +14,7 @@ namespace Swiftcore\Jose;
 class JWK
 {
     protected $kty;
+    public $res;
 
     public static function create($kty, $key = null)
     {

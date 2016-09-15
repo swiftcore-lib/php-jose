@@ -6,7 +6,7 @@ use Swiftcore\Jose\Element\Payload;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
 
-/* 4.1.  RSA v1.5 Signature */
+/* 4.4. HMAC-SHA2 Integrity Protection */
 class HS256SignatureTests extends RFC7520
 {
     public function testSigning()
