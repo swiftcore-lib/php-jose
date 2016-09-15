@@ -3,11 +3,10 @@ namespace Swiftcore\Jose\Key;
 
 use Swiftcore\Jose\Exception\InvalidECKeyArgumentException;
 use Swiftcore\Jose\Exception\InvalidJwkException;
-use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
 use Swiftcore\Jose\JWK;
 
 /**
- * Class RSAKey
+ * Class ECKey
  * @package Swiftcore\Jose\Key
  */
 final class ECKey extends JWK
@@ -15,52 +14,17 @@ final class ECKey extends JWK
     /**
      * @var string
      */
-    private $n;
+    private $x;
     /**
      * @var string
      */
-    private $e;
+    private $y;
     /**
      * @var string
      */
     private $d;
-    /**
-     * @var string
-     */
-    private $p;
-    /**
-     * @var string
-     */
-    private $q;
-    /**
-     * @var string
-     */
-    private $dp;
-    /**
-     * @var string
-     */
-    private $dq;
-    /**
-     * @var string
-     */
-    private $qi;
-    /**
-     * @var string
-     */
-    private $oth;
 
     public $res;
-
-    public static $RSA_OPENSSL_JOSE_MAPPING = [
-        'n' => 'n',
-        'd' => 'd',
-        'e' => 'e',
-        'p' => 'p',
-        'q' => 'q',
-        'dmp1' => 'dp',
-        'dmq1' => 'dq',
-        'iqmp' => 'qi',
-    ];
 
     /**
      * ECKey constructor.
@@ -80,7 +44,7 @@ final class ECKey extends JWK
                 $key = func_get_args();
                 break;
             default:
-                throw new InvalidRSAKeyArgumentException(["Parameter type: {$type} is not supported."]);
+                throw new InvalidECKeyArgumentException(["Parameter type: {$type} is not supported."]);
                 break;
         }
 

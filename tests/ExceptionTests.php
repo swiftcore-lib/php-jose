@@ -1,7 +1,9 @@
 <?php
 namespace Swiftcore\Jose\Tests;
 
+use Swiftcore\Jose\Exception\InvalidECKeyArgumentException;
 use Swiftcore\Jose\Exception\InvalidRSAKeyArgumentException;
+use Swiftcore\Jose\Key\ECKey;
 use Swiftcore\Jose\Key\RSAKey;
 
 class ExceptionTests extends TestCase
@@ -10,7 +12,7 @@ class ExceptionTests extends TestCase
     {
         $this->expectException(InvalidRSAKeyArgumentException::class);
         try {
-            $key = new RSAKey(111);
+            new RSAKey(111);
         } catch (InvalidRSAKeyArgumentException $e) {
             $hasErrors = $e->hasErrors();
             $this->assertEquals(1, $hasErrors);
@@ -23,6 +25,26 @@ class ExceptionTests extends TestCase
     public function testInvalidRSAKeyArgumentException2()
     {
         $this->expectException(InvalidRSAKeyArgumentException::class);
-        $key = new RSAKey('');
+        new RSAKey('');
+    }
+
+    public function testInvalidECKeyArgumentException1()
+    {
+        $this->expectException(InvalidECKeyArgumentException::class);
+        try {
+            new ECKey(111);
+        } catch (InvalidECKeyArgumentException $e) {
+            $hasErrors = $e->hasErrors();
+            $this->assertEquals(1, $hasErrors);
+            $errors = $e->getErrors();
+            $this->assertCount(1, $errors);
+            throw $e;
+        }
+    }
+
+    public function testInvalidECKeyArgumentException2()
+    {
+        $this->expectException(InvalidECKeyArgumentException::class);
+        new ECKey('');
     }
 }

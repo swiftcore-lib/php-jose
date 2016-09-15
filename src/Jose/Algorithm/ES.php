@@ -11,20 +11,31 @@ use FG\ASN1\Object;
 
 abstract class ES extends JWA
 {
-    protected $length;
-
     public function sign(JWK $jwk, JWS $jws)
     {
         $input = sprintf('%s.%s', $jws->protected, $jws->payload);
 
         openssl_sign($input, $signature, $jwk->res, $this->method);
+        /*
+         * @see https://tools.ietf.org/html/rfc7518#section-3.4
+         *
+         * Note that the Integer-to-OctetString Conversion
+         * defined in Section 2.3.7 of SEC1 [SEC1] used to represent R and S as
+         * octet sequences adds zero-valued high-order padding bits when needed
+         * to round the size up to a multiple of 8 bits; thus, each 521-bit
+         * integer is represented using 528 bits in 66 octets.)
+         */
+        $length = ceil(openssl_pkey_get_details($jwk->res)['bits'] / 8) * 2;
         $asn = Object::fromBinary($signature);
         $signature = null;
         foreach ($asn->getChildren() as $child) {
             /* @var $child \FG\ASN1\Universal\Integer */
-            $signature .= hex2bin(str_pad(gmp_strval(gmp_init(
-                $child->getContent()
-            ), 16), $this->length(), '0', STR_PAD_LEFT));
+            $content = $child->getContent();
+            $content = gmp_strval(gmp_init($content), 16);
+            $content = str_pad($content, $length, '0', STR_PAD_LEFT);
+            $content = hex2bin($content);
+
+            $signature .= $content;
         }
 
         return $signature;
@@ -36,8 +47,18 @@ abstract class ES extends JWA
 
         $signature = $jws->signature->raw();
         $signature = bin2hex($signature);
-        $R = mb_substr($signature, 0, $this->length(), '8bit');
-        $S = mb_substr($signature, $this->length(), null, '8bit');
+        /*
+         * @see https://tools.ietf.org/html/rfc7518#section-3.4
+         *
+         * Note that the Integer-to-OctetString Conversion
+         * defined in Section 2.3.7 of SEC1 [SEC1] used to represent R and S as
+         * octet sequences adds zero-valued high-order padding bits when needed
+         * to round the size up to a multiple of 8 bits; thus, each 521-bit
+         * integer is represented using 528 bits in 66 octets.)
+         */
+        $length = ceil(openssl_pkey_get_details($jwk->res)['bits'] / 8) * 2;
+        $R = mb_substr($signature, 0, $length, '8bit');
+        $S = mb_substr($signature, $length, null, '8bit');
 
         $sequence = new Sequence(
             new Integer(gmp_strval(gmp_init($R, 16), 10)),
@@ -47,14 +68,5 @@ abstract class ES extends JWA
         $verified = openssl_verify($input, $sequence->getBinary(), $jwk->res, $this->method);
 
         return 1 === $verified;
-    }
-
-    protected function length($length = null)
-    {
-        if (!empty($length)) {
-            $this->length = $length;
-        }
-
-        return $this->length;
     }
 }
