@@ -56,7 +56,9 @@ class ES512SignatureTests extends RFC7520
                        b24ndCBrZWVwIHlvdXIgZmVldCwgdGhlcmXigJlzIG5vIGtub3dpbmcgd2hlcm
                        UgeW91IG1pZ2h0IGJlIHN3ZXB0IG9mZiB0by4
                        .
-                       AeMWVF1Y27eCAXhXTq4gRumivz9JPvkyc0wvp3Whg9AwiVN3zMXGYoLFTDA0vFZh7dtNn5nIc-zWwsPhbhikrsMfAQCgkl2rACGoNwf_C6fQqNwdqXbHY_EOAwHdt0mfCYVat3G-JZXSW6bhtc353LkN2QdfccjmufggdVVyXKqVQcn_';
+                       AeMWVF1Y27eCAXhXTq4gRumivz9JPvkyc0wvp3Whg9AwiVN3zMXGYoLFTDA0vF
+                       Zh7dtNn5nIc-zWwsPhbhikrsMfAQCgkl2rACGoNwf_C6fQqNwdqXbHY_EOAwHd
+                       t0mfCYVat3G-JZXSW6bhtc353LkN2QdfccjmufggdVVyXKqVQcn_';
         $expectedHeaders = json_encode([
             'alg' => 'ES512',
             'kid' => 'bilbo.baggins@hobbiton.example',
