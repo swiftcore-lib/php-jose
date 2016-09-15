@@ -1,4 +1,4 @@
-## Key Generation OpenSSL Command
+## OpenSSL Key Generation Command
 
 JWA documentation ([RFC 7518](https://tools.ietf.org/html/rfc7518)) is very specific but OpenSSL documentation seems not. Naming convention looks to be slightly different sometimes for the same thing between JWA and OpenSSL:
 
