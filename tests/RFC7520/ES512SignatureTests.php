@@ -37,10 +37,6 @@ class ES512SignatureTests extends RFC7520
                            'lvdXIgZG9vci4gWW91IHN0ZXAgb250byB0aGUgcm9hZCwgYW5kIGlmIHlvdSBk'.
                            'b24ndCBrZWVwIHlvdXIgZmVldCwgdGhlcmXigJlzIG5vIGtub3dpbmcgd2hlcm'.
                            'UgeW91IG1pZ2h0IGJlIHN3ZXB0IG9mZiB0by4';
-        $expectedSignature = 'AE_R_YZCChjn4791jSQCrdPZCNYqHXCTZH0-JZGYNlaAjP2kqaluUIIUnC9qvb'.
-                             'u9Plon7KRTzoNEuT4Va2cmL1eJAQy3mtPBu_u_sDDyYjnAMDxXPn7XrT0lw-kv'.
-                             'AD890jl8e2puQens_IEKBpHABlsbEPX6sFY8OcGDqoRuBomu9xQ2';
-        $expectedSignature = 'MIGIAkIAg-jeTAVTfoK6eYDKGdaq5XzColB1ecILOFfjmUWIi25LDQU2ovtp9U7uawi_PXOxRZHHwblZMC4UPwCoSw-cLLQCQgHWs0iU4-gTl389ny8feGXSHGiu9vS1P7vFTsdtj56xEddsX-a1NxD2InFmxRUtxGm3rbMdrqAgAYRpVaxTOW5wFQ';
 
         $this->assertEquals($expectedHeaders, strval($jws->protected));
         $this->assertEquals($expectedPayload, strval($jws->payload));
@@ -60,9 +56,7 @@ class ES512SignatureTests extends RFC7520
                        b24ndCBrZWVwIHlvdXIgZmVldCwgdGhlcmXigJlzIG5vIGtub3dpbmcgd2hlcm
                        UgeW91IG1pZ2h0IGJlIHN3ZXB0IG9mZiB0by4
                        .
-                       AE_R_YZCChjn4791jSQCrdPZCNYqHXCTZH0-JZGYNlaAjP2kqaluUIIUnC9qvb
-                       u9Plon7KRTzoNEuT4Va2cmL1eJAQy3mtPBu_u_sDDyYjnAMDxXPn7XrT0lw-kv
-                       AD890jl8e2puQens_IEKBpHABlsbEPX6sFY8OcGDqoRuBomu9xQ2';
+                       AeMWVF1Y27eCAXhXTq4gRumivz9JPvkyc0wvp3Whg9AwiVN3zMXGYoLFTDA0vFZh7dtNn5nIc-zWwsPhbhikrsMfAQCgkl2rACGoNwf_C6fQqNwdqXbHY_EOAwHdt0mfCYVat3G-JZXSW6bhtc353LkN2QdfccjmufggdVVyXKqVQcn_';
         $expectedHeaders = json_encode([
             'alg' => 'ES512',
             'kid' => 'bilbo.baggins@hobbiton.example',

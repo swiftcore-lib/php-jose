@@ -37,4 +37,6 @@ RS512 (RSASSA using SHA-512 hash algorithm):
 Where length corresponds to which HMAC should be used. The recommendation is to have the keys to be the same size than the block size used for hashing:
 
     openssl rand -base64 512
-    
+
+
+## 
