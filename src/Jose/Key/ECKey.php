@@ -25,6 +25,7 @@ final class ECKey extends JWK
     private $d;
 
     public $res;
+    public $length;
 
     /**
      * ECKey constructor.
@@ -78,6 +79,16 @@ final class ECKey extends JWK
             throw new InvalidECKeyArgumentException(["EC key seems to be invalid."], 'Failed to load EC Key');
         }
 
+        /*
+         * @see https://tools.ietf.org/html/rfc7518#section-3.4
+         *
+         * Note that the Integer-to-OctetString Conversion
+         * defined in Section 2.3.7 of SEC1 [SEC1] used to represent R and S as
+         * octet sequences adds zero-valued high-order padding bits when needed
+         * to round the size up to a multiple of 8 bits; thus, each 521-bit
+         * integer is represented using 528 bits in 66 octets.)
+         */
+        $this->length = ceil(openssl_pkey_get_details($res)['bits'] / 8) * 2;
         $this->res = $res;
 
         return $this;
@@ -88,7 +99,8 @@ final class ECKey extends JWK
      */
     public function isPublicKey()
     {
-        return !$this->isPrivateKey();
+        // TODO: extract from PEM to Object and return
+        // return !$this->isPrivateKey();
     }
 
     /**
@@ -96,6 +108,7 @@ final class ECKey extends JWK
      */
     public function isPrivateKey()
     {
-        return !empty($this->d);
+        // TODO: extract from PEM to Object and return
+        // return !empty($this->d);
     }
 }
