@@ -13,6 +13,16 @@ use Swiftcore\Utility\RSAPKCS;
 /* 4.3. ECDSA Signature */
 class ES512SignatureTests extends RFC7520
 {
+    public function setUp()
+    {
+        if (defined('HHVM_VERSION')) {
+            $this->markTestSkipped(
+                'HHVM does NOT support for ECDSA signing and verifying.'
+            );
+        }
+        parent::setUp();
+    }
+
     public function testSigning()
     {
         $rawKey = $this->rfc7520ECPrivateKey;
