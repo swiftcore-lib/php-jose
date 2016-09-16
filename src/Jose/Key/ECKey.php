@@ -97,18 +97,20 @@ final class ECKey extends JWK
     /**
      * @return bool
      */
-    public function isPublicKey()
+    // TODO: extract from PEM to Object and return
+    /*public function isPublicKey()
     {
-        // TODO: extract from PEM to Object and return
-        // return !$this->isPrivateKey();
-    }
+
+         return !$this->isPrivateKey();
+    }*/
 
     /**
      * @return bool
      */
-    public function isPrivateKey()
+    // TODO: extract from PEM to Object and return
+
+    /*public function isPrivateKey()
     {
-        // TODO: extract from PEM to Object and return
-        // return !empty($this->d);
-    }
+        return !empty($this->d);
+    }*/
 }

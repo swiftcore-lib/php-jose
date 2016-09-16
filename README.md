@@ -30,7 +30,7 @@ composer require swiftcore-lib/php-jose
   * JWS RSxxx (SHAxxx with RSA)
 * [x] v0.2 (September 2016):
   * JWS HSxxx (HMAC SHAxxx)
-* [ ] v0.3 (September 2016)
+* [x] v0.3 (September 2016)
   * JWS ESxxx (SHAxxx with ECDSA)
 * [ ] v0.4 (October 2016)
   * JWS PSxxx (SHAxxx with RSA and MGF1)

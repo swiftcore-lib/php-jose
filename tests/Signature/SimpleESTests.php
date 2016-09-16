@@ -11,6 +11,16 @@ use Swiftcore\Utility\Base64Url;
 
 class SimpleESTests extends TestCase
 {
+    public function setUp()
+    {
+        if (defined('HHVM_VERSION')) {
+            $this->markTestSkipped(
+                'HHVM does NOT support for ECDSA signing and verifying.'
+            );
+        }
+        parent::setUp();
+    }
+
     public function testJwsES256SigningAndVerifyingWithEncryptedKeys()
     {
         $jwk = JWK::create('ec', [
