@@ -9,6 +9,8 @@ abstract class RFC7520 extends TestCase
     protected $rfc7520RSAPublicKey;
     protected $rfc7520SymmetricKeyMAC;
     protected $rfc7520SymmetricKeyEncryption;
+    protected $rfc7520ECPrivateKey;
+    protected $rfc7520ECPublicKey;
 
     public function setUp()
     {
@@ -88,6 +90,25 @@ abstract class RFC7520 extends TestCase
             "use" => "enc",
             "alg" => "A256GCM",
             "k" => "AAPapAv4LbFbiVawEjagUBluYqN5rhna-8nuldDvOx8"
+        ];
+
+        $this->rfc7520ECPrivateKey = [
+            "kty" => "EC",
+            "kid" => "bilbo.baggins@hobbiton.example",
+            "use" => "sig",
+            "crv" => "P-521",
+            "x" => "AHKZLLOsCOzz5cY97ewNUajB957y-C-U88c3v13nmGZx6sYl_oJXu9A5RkTKqjqvjyekWF-7ytDyRXYgCF5cj0Kt",
+            "y" => "AdymlHvOiLxXkEhayXQnNCvDX4h9htZaCJN34kfmC6pV5OhQHiraVySsUdaQkAgDPrwQrJmbnX9cwlGfP-HqHZR1",
+            "d" => "AAhRON2r9cqXX1hg-RoI6R1tX5p2rUAYdmpHZoC1XNM56KtscrX6zbKipQrCW9CGZH3T4ubpnoTKLDYJ_fF3_rJt"
+        ];
+
+        $this->rfc7520ECPublicKey = [
+            "kty" => $this->rfc7520ECPrivateKey['kty'],
+            "kid" => $this->rfc7520ECPrivateKey['kid'],
+            "use" => $this->rfc7520ECPrivateKey['use'],
+            "crv" => $this->rfc7520ECPrivateKey['crv'],
+            "x" => $this->rfc7520ECPrivateKey['x'],
+            "y" => $this->rfc7520ECPrivateKey['y'],
         ];
     }
 }

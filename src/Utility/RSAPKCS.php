@@ -94,7 +94,7 @@ final class RSAPKCS
             $n = new Integer(gmp_strval(gmp_import($this->n), 10));
             $e = new Integer(gmp_strval(gmp_import($this->e), 10));
             $sequence2 = new Sequence($n, $e);
-            $sequence2 = '0x'.gmp_strval(gmp_import($sequence2->getBinary()), 16);
+            $sequence2 = gmp_strval(gmp_import($sequence2->getBinary()), 16);
             $bit = new BitString($sequence2);
             $objectIdentifier = new ObjectIdentifier(OID::RSA_ENCRYPTION);
             $sequence1 = new Sequence($objectIdentifier, new NullObject());
