@@ -37,4 +37,20 @@ RS512 (RSASSA using SHA-512 hash algorithm):
 Where length corresponds to which HMAC should be used. The recommendation is to have the keys to be the same size than the block size used for hashing:
 
     openssl rand -base64 512
-    
+
+
+## OpenSSL ECDSA Signing and Verifying
+
+OpenSSL ECDSA signature is a bit different than what is defined in JWA as well.
+
+> (Note that the Integer-to-OctetString Conversion defined in Section 2.3.7 of SEC1 used to represent R and S as octet sequences adds zero-valued high-order padding bits when needed to round the size up to a multiple of 8 bits; thus, each 521-bit integer is represented using 528 bits in 66 octets.)
+
+While OpenSSL output the signature in sequence:
+
+```
+ECDSASignature ::= SEQUENCE {
+  R    INTEGER
+  S    INTEGER
+}
+```
+And neither R nor S is padded intoto 528 bits or 66 octets.
