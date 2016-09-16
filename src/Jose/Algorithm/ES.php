@@ -6,7 +6,6 @@ use FG\ASN1\Universal\Sequence;
 use Swiftcore\Jose\JWA;
 use Swiftcore\Jose\JWK;
 use Swiftcore\Jose\JWS;
-use Swiftcore\Utility\Base64Url;
 use FG\ASN1\Object;
 
 abstract class ES extends JWA
