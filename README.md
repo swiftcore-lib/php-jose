@@ -19,7 +19,7 @@ composer require swiftcore-lib/php-jose
 
 ## Notice & Disclaimer
 
-> This library is not yet stable at the moment, API may change without prior notification, please use it at your own risk. 
+> This library is stable now, all the methods are unit tested (100% codes are covered), It's not reaching major release version yet, API may change without prior notification. 
 > 
 > [Pull Request](https://github.com/swiftcore-lib/php-jose/pulls) are welcome. Please use [GitHub Issues](https://github.com/swiftcore-lib/php-jose/issues) for any issue / problem encoutered.
 
