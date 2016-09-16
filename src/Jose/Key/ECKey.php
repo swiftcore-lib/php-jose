@@ -12,22 +12,6 @@ use Swiftcore\Jose\JWK;
 final class ECKey extends JWK
 {
     /**
-     * @var string
-     */
-    private $x;
-    /**
-     * @var string
-     */
-    private $y;
-    /**
-     * @var string
-     */
-    private $d;
-
-    public $res;
-    public $length;
-
-    /**
      * ECKey constructor.
      *
      * @param array|string|null $key
@@ -93,24 +77,4 @@ final class ECKey extends JWK
 
         return $this;
     }
-
-    /**
-     * @return bool
-     */
-    // TODO: extract from PEM to Object and return
-    /*public function isPublicKey()
-    {
-
-         return !$this->isPrivateKey();
-    }*/
-
-    /**
-     * @return bool
-     */
-    // TODO: extract from PEM to Object and return
-
-    /*public function isPrivateKey()
-    {
-        return !empty($this->d);
-    }*/
 }

@@ -9,7 +9,7 @@ class InvalidECKeyArgumentException extends \InvalidArgumentException implements
 
     public function __construct($errors = [], $message = '', $code = 0, \Exception $previous = null)
     {
-        if ($errors) {
+        if (!empty($errors)) {
             $this->addErrors($errors);
         }
         parent::__construct($message ? $message : 'Invalid EC Key Argument', $code, $previous);

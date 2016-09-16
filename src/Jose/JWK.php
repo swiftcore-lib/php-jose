@@ -15,6 +15,7 @@ class JWK
 {
     protected $kty;
     public $res;
+    public $length;
 
     public static function create($kty, $key = null)
     {

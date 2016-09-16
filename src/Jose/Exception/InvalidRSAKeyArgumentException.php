@@ -9,7 +9,7 @@ class InvalidRSAKeyArgumentException extends \InvalidArgumentException implement
 
     public function __construct($errors = [], $message = '', $code = 0, \Exception $previous = null)
     {
-        if ($errors) {
+        if (!empty($errors)) {
             $this->addErrors($errors);
         }
         parent::__construct($message ? $message : 'Invalid RSA Key Argument', $code, $previous);

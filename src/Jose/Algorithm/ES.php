@@ -15,7 +15,8 @@ abstract class ES extends JWA
         $input = sprintf('%s.%s', $jws->protected, $jws->payload);
 
         openssl_sign($input, $signature, $jwk->res, $this->method);
-        $asn = Object::fromBinary($signature);
+        /* @var $asn  \FG\ASN1\Universal\Sequence */
+        $asn       = Object::fromBinary($signature);
         $signature = null;
         foreach ($asn->getChildren() as $child) {
             /* @var $child \FG\ASN1\Universal\Integer */
@@ -32,14 +33,14 @@ abstract class ES extends JWA
 
     public function verify(JWK $jwk, JWS $jws)
     {
-        $input = sprintf('%s.%s', $jws->protected, $jws->payload);
+        $input     = sprintf('%s.%s', $jws->protected, $jws->payload);
 
         $signature = $jws->signature->raw();
         $signature = bin2hex($signature);
-        $R = mb_substr($signature, 0, $jwk->length, '8bit');
-        $S = mb_substr($signature, $jwk->length, null, '8bit');
+        $R         = mb_substr($signature, 0, $jwk->length, '8bit');
+        $S         = mb_substr($signature, $jwk->length, null, '8bit');
 
-        $sequence = new Sequence(
+        $sequence  = new Sequence(
             new Integer(gmp_strval(gmp_init($R, 16), 10)),
             new Integer(gmp_strval(gmp_init($S, 16), 10))
         );

@@ -14,7 +14,7 @@ http://stackoverflow.com/questions/18039401/how-can-i-transform-between-the-two-
 https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/
 */
 
-final class RSAPKCS
+final class RSAPKCS extends PEM
 {
     const TYPE_STRING_PRIVATE = 'RSA PRIVATE';
     const TYPE_STRING_PUBLIC = 'PUBLIC';
@@ -27,9 +27,6 @@ final class RSAPKCS
     private $dmp1;
     private $dmq1;
     private $iqmp;
-
-    private $sequence;
-    private $type;
 
     public function __construct(array $data)
     {
@@ -102,13 +99,5 @@ final class RSAPKCS
             $this->sequence = new Sequence($sequence1, $bit);
             $this->type = self::TYPE_STRING_PUBLIC;
         }
-    }
-
-    public function __toString()
-    {
-        $key = chunk_split(base64_encode($this->sequence->getBinary()), 64, PHP_EOL);
-        $key = "-----BEGIN ".$this->type." KEY-----" . PHP_EOL . $key . "-----END ".$this->type." KEY-----";
-
-        return $key;
     }
 }

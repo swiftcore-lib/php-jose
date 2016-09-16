@@ -15,38 +15,11 @@ final class RSAKey extends JWK
      * @var string
      */
     private $n;
-    /**
-     * @var string
-     */
-    private $e;
+
     /**
      * @var string
      */
     private $d;
-    /**
-     * @var string
-     */
-    private $p;
-    /**
-     * @var string
-     */
-    private $q;
-    /**
-     * @var string
-     */
-    private $dp;
-    /**
-     * @var string
-     */
-    private $dq;
-    /**
-     * @var string
-     */
-    private $qi;
-    /**
-     * @var string
-     */
-    private $oth;
 
     public $res;
 
