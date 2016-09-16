@@ -18,7 +18,7 @@ Followings are not suppored when running with hhvm (rest are working and unit te
 * ECDSA Signature (ES256/384/512) signing and verifying
 
 
-### Installation
+## Installation
 
 Preferrable way to install via Composer:
 
